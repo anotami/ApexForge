@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ApexForge Athletics | Accesorios para Atletas</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900&display=swap');
+
+        :root {
+            --primary-color: #ff5722;
+            --bg-color: #0d0d0d;
+            --text-color: #f4f4f4;
+            --card-bg: #1a1a1a;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('https://images.unsplash.com/photo-1552674605-171d31fea3f3?q=80&w=2070&auto=format&fit=crop') center/cover;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            border-bottom: 3px solid var(--primary-color);
+        }
+
+        header h1 {
+            font-size: 4rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        header h1 span {
+            color: var(--primary-color);
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            color: #ccc;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: 900;
+        }
+
+        .section-title span {
+            color: var(--primary-color);
+        }
+
+        /* Grid de Productos */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
+        }
+
+        .product-card {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            border: 1px solid #333;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.2);
+            border-color: var(--primary-color);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-bottom: 3px solid var(--primary-color);
+            background-color: #222;
+        }
+
+        .product-info {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .product-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #fff;
+        }
+
+        .product-desc {
+            font-size: 0.9rem;
+            color: #aaa;
+            margin-bottom: 20px;
+            flex-grow: 1;
+        }
+
+        /* Botón WhatsApp Flotante */
+        .whatsapp-float {
+            position: fixed;
+            width: 60px;
+            height: 60px;
+            bottom: 40px;
+            right: 40px;
+            background-color: #25d366;
+            color: #FFF;
+            border-radius: 50px;
+            text-align: center;
+            font-size: 30px;
+            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
+            z-index: 100;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebe57;
+            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.6);
+        }
+
+        .whatsapp-icon {
+            width: 35px;
+            height: 35px;
+            fill: currentColor;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #000;
+            text-align: center;
+            padding: 30px 20px;
+            border-top: 1px solid #333;
+            margin-top: 40px;
+        }
+
+        footer p {
+            color: #777;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>ApexForge <span>Athletics</span></h1>
+        <p>Accesorios de alto rendimiento para Ironman, Maratón, Ciclismo y Powerlifting. Diseño inteligente para atletas reales.</p>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Nuestro <span>Catálogo</span></h2>
+        
+        <div class="catalog-grid">
+            
+            <div class="product-card">
+                <img src="imagenes/soporte_soft_flask_salomon.jpg" alt="Soporte Soft Flask Salomon" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte Soft Flask Salomon</h3>
+                    <p class="product-desc">Mantén tus botellas blandas libres de humedad. Ideal para secar tu equipo de trail running rápidamente tras los entrenamientos.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_reloj_garmin_1.jpg" alt="Soporte Reloj Garmin" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte de Mesa Garmin</h3>
+                    <p class="product-desc">Exhibe y carga tu reloj deportivo con estilo en tu escritorio o mesa de noche mientras no estás acumulando kilómetros.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/cargador_garmin_rojo_1.jpg" alt="Base de Carga Garmin" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Base de Carga Circular Garmin</h3>
+                    <p class="product-desc">Estación de carga elegante en color rojo. Olvídate de los cables sueltos y mantén tu dispositivo listo para la próxima sesión.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_tortuga_casco_ciclismo.jpg" alt="Soporte Casco Tortuga" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte de Casco "Tortuga"</h3>
+                    <p class="product-desc">Organiza tu espacio y protege tu equipo. Un soporte de pared con un diseño único ideal para cascos de ruta, MTB o aerodinámicos.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_lentes_oakley.jpg" alt="Soporte Lentes Oakley" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte para Lentes Oakley</h3>
+                    <p class="product-desc">Protege tus gafas deportivas de rayones. Capacidad para 3 pares de lentes, manteniéndolos organizados y siempre a mano.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_reloj_suunto.jpg" alt="Soporte Reloj Suunto" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte de Carga Suunto</h3>
+                    <p class="product-desc">Diseñado específicamente para ajustarse a la perfección a los relojes Suunto, combinando estética y funcionalidad en tu escritorio.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_gps_garmin_bicicleta_1.jpg" alt="Soporte GPS Garmin Bicicleta" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte GPS Garmin para Manubrio</h3>
+                    <p class="product-desc">Posiciona tu ciclocomputador de forma segura y aerodinámica para máxima visibilidad durante tus rodadas más exigentes.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/figura_triathlon_evolution_1.jpg" alt="Figura Triathlon Evolution" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Figura "Triathlon Evolution"</h3>
+                    <p class="product-desc">Pieza decorativa impresa en 3D que captura la esencia y la evolución de las tres disciplinas. El regalo perfecto para un triatleta.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/placa_decorativa_run.jpg" alt="Placa Decorativa RUN" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Placa Decorativa "RUN"</h3>
+                    <p class="product-desc">Demuestra tu pasión por el running con esta placa decorativa para tu habitación, oficina o espacio de entrenamiento.</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <a href="https://api.whatsapp.com/send/?phone=51957085531&text=Hola%2C+quiero+informacoin+al&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+        </svg>
+    </a>
+
+    <footer>
+        <p>&copy; 2026 ApexForge Athletics. Todos los derechos reservados. | Diseñado para el rendimiento.</p>
+    </footer>
+
+</body>
+</html>
