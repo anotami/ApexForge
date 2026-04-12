@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ApexForge Athletics | Accesorios para Atletas</title>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,700;0,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght=0,400;0,700;0,900&display=swap');
 
         :root {
             --primary-color: #ff5722;
@@ -30,10 +30,9 @@
 
         /* Header / Hero Section */
         header {
-            /* Lightened dark gradient overlay to make image visible (0.4/0.7 overlay instead of 0.7/0.9) */
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.7)),
-                        url('imagenes/foto_finisher_maraton_lima_42k.jpg') center/cover;
-            height: 100vh; /* Was 70vh, increased by ~43% (>30%) for maximum visibility of the girls in the background */
+            /* NUEVA PORTADA: Imagen de las chicas en el cruce de la Maraton de Lima */
+            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('imagenes/foto_finisher_maraton_lima_42k.jpg') center/cover;
+            height: 60vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -49,7 +48,6 @@
             text-transform: uppercase;
             letter-spacing: 2px;
             margin-bottom: 10px;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.5); /* Added for better readability on lighter overlay */
         }
 
         header h1 span {
@@ -60,12 +58,11 @@
             font-size: 1.2rem;
             max-width: 600px;
             color: #ccc;
-            text-shadow: 0 1px 3px rgba(0,0,0,0.5); /* Added for better readability */
         }
 
         /* Container */
         .container {
-            max-width: 1400px; /* Increased to accommodate larger product cards */
+            max-width: 1200px;
             margin: 0 auto;
             padding: 60px 20px;
         }
@@ -85,9 +82,8 @@
         /* Grid de Productos */
         .catalog-grid {
             display: grid;
-            /* Was minmax(280px, 1fr), increased by 25% for wider cards */
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 40px; /* Slight increase for better spacing with larger items */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
         }
 
         .product-card {
@@ -108,15 +104,10 @@
 
         .product-image {
             width: 100%;
-            height: 350px; /* Was 250px, increased by 40% (>30%) for much larger visibility */
+            height: 250px;
             object-fit: cover;
             border-bottom: 3px solid var(--primary-color);
-            background-color: #222;
-            transition: transform 0.3s ease; /* Transition for the zoom effect */
-        }
-
-        .product-card:hover .product-image {
-            transform: scale(1.05); /* Added a slight zoom effect on hover for larger images */
+            background-color: #222; /* Fondo por si la imagen tarda en cargar */
         }
 
         .product-info {
@@ -201,153 +192,201 @@
         <div class="catalog-grid">
             
             <div class="product-card">
-                <img src="imagenes/soporte_soft_flask_salomon.jpg" alt="Soporte Soft Flask Salomon" class="product-image">
+                <img src="imagenes/cargador_garmin_rojo_1.jpg" alt="Cargador circular rojo 3D, vista superior" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte Soft Flask Salomon</h3>
-                    <p class="product-desc">Mantén tus botellas blandas libres de humedad. Ideal para secar tu equipo de trail running rápidamente tras los entrenamientos.</p>
+                    <h3 class="product-title">Cargador Circular Rojo 3D (Vista Superior)</h3>
+                    <p class="product-desc">Base de carga elegante y funcional para tu reloj Garmin.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_reloj_garmin_1.jpg" alt="Soporte Reloj Garmin" class="product-image">
+                <img src="imagenes/cargador_garmin_rojo_2.jpg" alt="Cargador circular rojo 3D con cable USB" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte de Mesa Garmin</h3>
-                    <p class="product-desc">Exhibe y carga tu reloj deportivo con estilo en tu escritorio o mesa de noche mientras no estás acumulando kilómetros.</p>
+                    <h3 class="product-title">Cargador Circular Rojo 3D (Vista Trasera)</h3>
+                    <p class="product-desc">Soporte Garmin con cable USB perfectamente integrado.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/cargador_garmin_rojo_1.jpg" alt="Base de Carga Garmin" class="product-image">
+                <img src="imagenes/figura_triathlon_evolution_1.jpg" alt="Figura 'Triathlon Evolution' impresa 3D, vista frontal" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Base de Carga Circular Garmin</h3>
-                    <p class="product-desc">Estación de carga elegante en color rojo. Olvídate de los cables sueltos y mantén tu dispositivo listo para la próxima sesión.</p>
+                    <h3 class="product-title">Figura Triathlon Evolution (Vista Frontal)</h3>
+                    <p class="product-desc">Pieza decorativa que celebra la evolución del triatleta.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_tortuga_casco_ciclismo.jpg" alt="Soporte Casco Tortuga" class="product-image">
+                <img src="imagenes/figura_triathlon_evolution_2.jpg" alt="Figura 'Triathlon Evolution' impresa 3D, vista lateral" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte de Casco "Tortuga"</h3>
-                    <p class="product-desc">Organiza tu espacio y protege tu equipo. Un soporte de pared con un diseño único ideal para cascos de ruta, MTB o aerodinámicos.</p>
+                    <h3 class="product-title">Figura Triathlon Evolution (Vista Lateral)</h3>
+                    <p class="product-desc">Detalles impresionantes de la figura coleccionable impresos en 3D.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_lentes_oakley.jpg" alt="Soporte Lentes Oakley" class="product-image">
+                <img src="imagenes/medalla_finisher_ironman_703_mundial.jpg" alt="Medalla Finisher Ironman 70.3 World Championship" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte para Lentes Oakley</h3>
-                    <p class="product-desc">Protege tus gafas deportivas de rayones. Capacidad para 3 pares de lentes, manteniéndolos organizados y siempre a mano.</p>
+                    <h3 class="product-title">Medalla Finisher Ironman 70.3 Mundial</h3>
+                    <p class="product-desc">Un logro monumental inmortalizado en una medalla impresa en 3D.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_reloj_suunto.jpg" alt="Soporte Reloj Suunto" class="product-image">
+                <img src="imagenes/placa_decorativa_run.jpg" alt="Placa grabada con texto 'RUN.'" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte de Carga Suunto</h3>
-                    <p class="product-desc">Diseñado específicamente para ajustarse a la perfección a los relojes Suunto, combinando estética y funcionalidad en tu escritorio.</p>
+                    <h3 class="product-title">Placa Decorativa RUN</h3>
+                    <p class="product-desc">Demuestra tu pasión por el running en tu espacio.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_gps_garmin_bicicleta_1.jpg" alt="Soporte GPS Garmin Bicicleta" class="product-image">
+                <img src="imagenes/soporte_gps_garmin_bicicleta_1.jpg" alt="Soporte GPS Garmin en manubrio (comparativa)" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte GPS Garmin para Manubrio</h3>
-                    <p class="product-desc">Posiciona tu ciclocomputador de forma segura y aerodinámica para máxima visibilidad durante tus rodadas más exigentes.</p>
+                    <h3 class="product-title">Soporte GPS Manubrio (Comparativa)</h3>
+                    <p class="product-desc">Comparación de diferentes opciones de montaje para tu GPS.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/figura_triathlon_evolution_1.jpg" alt="Figura Triathlon Evolution" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Figura "Triathlon Evolution"</h3>
-                    <p class="product-desc">Pieza decorativa impresa en 3D que captura la esencia y la evolución de las tres disciplinas. El regalo perfecto para un triatleta.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/placa_decorativa_run.jpg" alt="Placa Decorativa RUN" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Placa Decorativa "RUN"</h3>
-                    <p class="product-desc">Demuestra tu pasión por el running con esta placa decorativa para tu habitación, oficina o espacio de entrenamiento.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_reloj_garmin_2.jpg" alt="Soporte Garmin Vista Trasera" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte Garmin (Vista Trasera)</h3>
-                    <p class="product-desc">Vista posterior del soporte para reloj Garmin, mostrando la integración ordenada del cable USB.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/cargador_garmin_rojo_2.jpg" alt="Cargador Garmin Rojo con Cable" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Cargador Garmin Rojo con Cable</h3>
-                    <p class="product-desc">Cargador circular rojo 3D mostrando el cable USB para carga.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_tortuga_garmin_luz.jpg" alt="Soporte Tortuga GPS + Luz" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte Tortuga GPS + Luz</h3>
-                    <p class="product-desc">Soporte 3D compacto para montar tu GPS Garmin y una luz trasera en la bicicleta de forma compacta y aerodinámica.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_gps_garmin_bicicleta_2.jpg" alt="Soporte GPS Manubrio (Dos Versiones)" class="product-image">
+                <img src="imagenes/soporte_gps_garmin_bicicleta_2.jpg" alt="Soporte GPS Garmin en manubrio (dos versiones)" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Soporte GPS Manubrio (Dos Versiones)</h3>
-                    <p class="product-desc">Soporte GPS Garmin para manubrio, mostrando dos versiones diferentes para distintas configuraciones.</p>
+                    <p class="product-desc">Dos versiones para adaptar el GPS a tu manubrio.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/figura_triathlon_evolution_2.jpg" alt="Figura Triathlon Evolution (Lateral)" class="product-image">
+                <img src="imagenes/soporte_lentes_oakley.jpg" alt="Soporte 3D para 3 lentes Oakley" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Figura "Triathlon Evolution" (Lateral)</h3>
-                    <p class="product-desc">Figura coleccionable 3D "Triathlon Evolution", vista lateral que resalta los detalles impresos.</p>
+                    <h3 class="product-title">Soporte para 3 Lentes Oakley</h3>
+                    <p class="product-desc">Protege tus gafas deportivas de rayones con estilo.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/medalla_finisher_ironman_703_mundial.jpg" alt="Medalla Finisher Ironman 70.3" class="product-image">
+                <img src="imagenes/soporte_reloj_garmin_1.jpg" alt="Reloj Garmin en soporte 3D cargando" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Medalla Finisher Ironman 70.3</h3>
-                    <p class="product-desc">Medalla conmemorativa de Finisher del Campeonato Mundial Ironman 70.3, impresa en 3D con gran detalle.</p>
+                    <h3 class="product-title">Soporte Reloj Garmin (Cargando)</h3>
+                    <p class="product-desc">Exhibe y carga tu reloj deportivo con este soporte.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/medalla_maraton_lima_42k_2.jpg" alt="Medalla Maraton Lima 42k" class="product-image">
+                <img src="imagenes/soporte_reloj_garmin_2.jpg" alt="Soporte Garmin, vista trasera con cable USB" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Medalla Maraton Lima 42k</h3>
-                    <p class="product-desc">Medalla conmemorativa de la Maraton de Lima 42k. Una pieza única que celebra el gran logro de cruzar la meta.</p>
+                    <h3 class="product-title">Soporte Reloj Garmin (Vista Trasera)</h3>
+                    <p class="product-desc">Vista posterior mostrando la integración ordenada del cable.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_celular_manubrio_bicicleta.jpg" alt="Soporte Celular Manubrio 3D" class="product-image">
+                <img src="imagenes/soporte_reloj_suunto.jpg" alt="Reloj Suunto en soporte 3D" class="product-image">
                 <div class="product-info">
-                    <h3 class="product-title">Soporte Celular Manubrio 3D</h3>
-                    <p class="product-desc">Soporte 3D robusto para montar tu celular de forma segura en el manubrio de tu bicicleta.</p>
+                    <h3 class="product-title">Soporte de Mesa Suunto</h3>
+                    <p class="product-desc">Soporte de mesa elegante para tu reloj Suunto.</p>
                 </div>
             </div>
 
             <div class="product-card">
-                <img src="imagenes/soporte_linterna_bicicleta_3d.jpg" alt="Soporte Linterna Bicicleta 3D" class="product-image">
+                <img src="imagenes/soporte_soft_flask_salomon.jpg" alt="Soporte 3D para botellas blandas Salomon" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte de Secado para Soft Flasks</h3>
+                    <p class="product-desc">Mantén tus botellas de trail running libres de humedad.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_tortuga_casco_ciclismo.jpg" alt="Soporte tortuga 3D con casco Oakley" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte de Casco Tortuga (Oakley)</h3>
+                    <p class="product-desc">Protege tu casco de ciclismo con este diseño único.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_tortuga_garmin_luz.jpg" alt="Soporte tortuga 3D con GPS Garmin y luz trasera" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte Tortuga GPS + Luz Trasera</h3>
+                    <p class="product-desc">Organización compacta y segura para tu GPS y luz.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/medalla_maraton_lima_42k_2.jpg" alt="Medalla de la maratón de Lima (segunda versión)" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Medalla Finisher Maratón de Lima 42k</h3>
+                    <p class="product-desc">Un logro monumental inmortalizado en una medalla impresa en 3D.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_celular_manubrio_bicicleta.jpg" alt="Soporte para celular en manubrio de bicicleta" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Soporte de Celular para Bicicleta</h3>
+                    <p class="product-desc">Mantén tu móvil a la vista y seguro en tus rodadas.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/soporte_linterna_bicicleta_3d.jpg" alt="Soporte para linterna de bicicleta impreso en 3D" class="product-image">
                 <div class="product-info">
                     <h3 class="product-title">Soporte Linterna Bicicleta 3D</h3>
-                    <p class="product-desc">Soporte universal 3D para montar linternas en el manubrio de tu bicicleta.</p>
+                    <p class="product-desc">Iluminación segura para tus rodadas nocturnas.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/rack_records_powerlifting_render.jpg" alt="Render 3D rack PR (Squat/Bench/Deadlift)" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Rack Records Powerlifting (Render)</h3>
+                    <p class="product-desc">Un render 3D de un rack para registrar tus marcas personales.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/rack_records_weightlifting_impreso.jpg" alt="Rack PR impreso (Clean & Jerk / Snatch) Alezcano" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Rack Records Weightlifting (Impreso)</h3>
+                    <p class="product-desc">Rack impreso en 3D para tus récords de levantamiento.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/llavero_disco_light_weight_baby.jpg" alt="Llavero disco verde 'Light Weight Baby!'" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Llavero Disco Light Weight Baby!</h3>
+                    <p class="product-desc">Motivación impresa en 3D para tu llavero.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/llavero_disco_no_pain_no_gain.jpg" alt="Llavero disco azul 'No Pain No Gain'" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Llavero Disco No Pain No Gain</h3>
+                    <p class="product-desc">Un recordatorio constante de que el esfuerzo vale la pena.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/llavero_no_pain_lifestyle_gym.jpg" alt="Lifestyle: bolso gym + llavero + zapatillas" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Llavero Lifestyle No Pain</h3>
+                    <p class="product-desc">Un llavero que captura el espíritu del gimnasio.</p>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="imagenes/llavero_kettlebell_16kg.jpg" alt="Llavero kettlebell rojo 16kg" class="product-image">
+                <div class="product-info">
+                    <h3 class="product-title">Llavero Kettlebell Rojo 16kg</h3>
+                    <p class="product-desc">Llavero impreso en 3D con forma de pesa rusa.</p>
                 </div>
             </div>
 
         </div>
     </div>
 
-    <a href="https://api.whatsapp.com/send/?phone=51957085531&text=Hola%2C+quiero+informacoin+al&type=phone_number&app_absent=0" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
+    <a href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20ApexForge%20y%20quiero%20más%20información%20sobre%20sus%20accesorios%203D" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
         <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
             <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
         </svg>
