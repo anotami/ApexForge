@@ -62,17 +62,33 @@
 
         /* ── HEADER / HERO ── */
         header {
-            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.9)),
-                        url('imagenes/foto_finisher_maraton_lima_42k.jpg') center/cover;
-            min-height: 75vh;
+            position: relative;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 80px 20px 40px;
+            padding: 100px 20px 60px;
             border-bottom: 3px solid var(--primary);
-            position: relative;
+            overflow: hidden;
+            isolation: isolate;
+        }
+        header::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('imagenes/foto_finisher_maraton_lima_42k.jpg') center top / cover no-repeat;
+            filter: grayscale(70%) brightness(0.55) contrast(1.05);
+            z-index: -2;
+            transform: scale(1.02);
+        }
+        header::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(rgba(13,13,13,0.35) 0%, rgba(13,13,13,0.55) 60%, rgba(13,13,13,0.95) 100%);
+            z-index: -1;
         }
         header h1 {
             font-size: 4rem;
