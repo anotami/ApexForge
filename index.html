@@ -3,398 +3,1180 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ApexForge Athletics | Accesorios para Atletas</title>
+    <title>ApexForge Athletics | Accesorios 3D para Atletas</title>
+    <meta name="description" content="Accesorios impresos en 3D para running, triatlón, ciclismo, powerlifting y más. Diseño funcional para atletas reales.">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght=0,400;0,700;0,900&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&display=swap');
 
         :root {
-            --primary-color: #ff5722;
-            --bg-color: #0d0d0d;
-            --text-color: #f4f4f4;
-            --card-bg: #1a1a1a;
+            --primary: #ff5722;
+            --primary-dark: #e64a19;
+            --primary-soft: rgba(255, 87, 34, 0.15);
+            --bg: #0d0d0d;
+            --bg-card: #1a1a1a;
+            --bg-elev: #222;
+            --text: #f4f4f4;
+            --text-muted: #999;
+            --border: #2a2a2a;
+            --wa-green: #25d366;
             --transition: all 0.3s ease;
         }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
+        html { scroll-behavior: smooth; }
+        body { background: var(--bg); color: var(--text); line-height: 1.6; overflow-x: hidden; }
+        a { color: inherit; text-decoration: none; }
+        button { font-family: inherit; }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            line-height: 1.6;
+        /* ── NAV ── */
+        nav {
+            position: fixed;
+            top: 0; left: 0; right: 0;
+            background: rgba(13, 13, 13, 0.0);
+            z-index: 200;
+            padding: 18px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background 0.3s ease, padding 0.3s ease, backdrop-filter 0.3s ease;
         }
+        nav.scrolled {
+            background: rgba(13, 13, 13, 0.92);
+            backdrop-filter: blur(8px);
+            padding: 12px 30px;
+            border-bottom: 1px solid var(--border);
+        }
+        .nav-logo { font-weight: 900; font-size: 1.2rem; letter-spacing: 1px; text-transform: uppercase; }
+        .nav-logo span { color: var(--primary); }
+        .nav-cta {
+            background: var(--primary);
+            padding: 8px 18px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+        }
+        .nav-cta:hover { background: var(--primary-dark); transform: translateY(-2px); }
 
-        /* Header / Hero Section */
+        /* ── HEADER / HERO ── */
         header {
-            /* NUEVA PORTADA: Imagen de las chicas en el cruce de la Maraton de Lima */
-            background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.9)), url('imagenes/foto_finisher_maraton_lima_42k.jpg') center/cover;
-            height: 60vh;
+            background: linear-gradient(rgba(0,0,0,0.55), rgba(0,0,0,0.9)),
+                        url('imagenes/foto_finisher_maraton_lima_42k.jpg') center/cover;
+            min-height: 75vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 0 20px;
-            border-bottom: 3px solid var(--primary-color);
+            padding: 80px 20px 40px;
+            border-bottom: 3px solid var(--primary);
+            position: relative;
         }
-
         header h1 {
             font-size: 4rem;
             font-weight: 900;
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+            animation: fadeUp 0.8s ease;
         }
-
-        header h1 span {
-            color: var(--primary-color);
-        }
-
+        header h1 span { color: var(--primary); }
         header p {
             font-size: 1.2rem;
-            max-width: 600px;
+            max-width: 640px;
             color: #ccc;
+            margin-bottom: 30px;
+            animation: fadeUp 0.8s ease 0.15s backwards;
         }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 60px 20px;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 2.5rem;
-            margin-bottom: 40px;
+        .hero-cta {
+            display: inline-block;
+            background: var(--primary);
+            color: #fff;
+            padding: 14px 34px;
+            border-radius: 50px;
+            font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.9rem;
+            transition: var(--transition);
+            animation: fadeUp 0.8s ease 0.3s backwards;
+        }
+        .hero-cta:hover { background: var(--primary-dark); transform: translateY(-3px); box-shadow: 0 10px 30px rgba(255,87,34,0.4); }
+
+        .scroll-down {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 1.5rem;
+            color: var(--primary);
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes bounce { 0%, 100% { transform: translateX(-50%) translateY(0); } 50% { transform: translateX(-50%) translateY(10px); } }
+
+        /* ── CONTAINER ── */
+        .container { max-width: 1280px; margin: 0 auto; padding: 70px 20px; }
+        .section-title { text-align: center; font-size: 2.5rem; margin-bottom: 12px; text-transform: uppercase; font-weight: 900; }
+        .section-title span { color: var(--primary); }
+        .section-subtitle { text-align: center; color: var(--text-muted); margin-bottom: 35px; font-size: 1rem; }
+
+        /* ── FILTER + SEARCH ── */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 18px;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+        .filter-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; }
+        .filter-btn {
+            padding: 9px 20px;
+            border: 2px solid var(--border);
+            background: transparent;
+            color: var(--text-muted);
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
+            white-space: nowrap;
+        }
+        .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+        .filter-btn.active { background: var(--primary); border-color: var(--primary); color: #fff; }
+        .filter-btn .count { opacity: 0.7; margin-left: 6px; font-size: 0.7rem; }
+
+        .search-wrap { position: relative; width: 100%; max-width: 420px; }
+        .search-input {
+            width: 100%;
+            padding: 11px 20px 11px 44px;
+            background: var(--bg-card);
+            border: 2px solid var(--border);
+            border-radius: 50px;
+            color: var(--text);
+            font-size: 0.9rem;
+            outline: none;
+            transition: var(--transition);
+        }
+        .search-input::placeholder { color: var(--text-muted); }
+        .search-input:focus { border-color: var(--primary); }
+        .search-icon { position: absolute; left: 16px; top: 50%; transform: translateY(-50%); color: var(--text-muted); pointer-events: none; }
+
+        .result-count { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 25px; }
+        .result-count strong { color: var(--primary); }
+
+        /* ── GRID ── */
+        .catalog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 26px;
+        }
+
+        /* ── CARD ── */
+        .product-card {
+            background: var(--bg-card);
+            border-radius: 14px;
+            overflow: hidden;
+            border: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+            position: relative;
+        }
+        .product-card.visible { opacity: 1; transform: translateY(0); }
+        .product-card.filtered-out { display: none; }
+        .product-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 35px rgba(255, 87, 34, 0.22);
+            border-color: var(--primary);
+        }
+
+        .card-img-wrap { position: relative; overflow: hidden; background: var(--bg-elev); }
+        .product-image {
+            width: 100%;
+            height: 240px;
+            object-fit: cover;
+            display: block;
+            border-bottom: 3px solid var(--primary);
+            transition: transform 0.5s ease;
+        }
+        .product-card:hover .product-image { transform: scale(1.05); }
+
+        .cat-badge, .new-badge, .multi-badge {
+            position: absolute;
+            font-size: 0.68rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 10px;
+            border-radius: 50px;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .cat-badge {
+            top: 12px;
+            left: 12px;
+            background: rgba(0,0,0,0.7);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+        }
+        .new-badge {
+            top: 12px;
+            right: 12px;
+            background: var(--primary);
+            color: #fff;
+            box-shadow: 0 4px 12px rgba(255,87,34,0.4);
+        }
+        .multi-badge {
+            bottom: 12px;
+            right: 12px;
+            background: rgba(0,0,0,0.7);
+            color: #fff;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .product-info { padding: 18px; flex-grow: 1; display: flex; flex-direction: column; }
+        .product-title {
+            font-size: 1rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            color: #fff;
+            line-height: 1.3;
+        }
+        .product-desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            flex-grow: 1;
+            line-height: 1.5;
+        }
+        .card-actions { display: flex; gap: 8px; }
+        .btn-detail, .btn-wa-card {
+            flex: 1;
+            padding: 9px 10px;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: var(--transition);
+            text-transform: uppercase;
+            letter-spacing: 0.3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 5px;
+            border: none;
+        }
+        .btn-detail {
+            background: transparent;
+            border: 1.5px solid var(--border);
+            color: var(--text-muted);
+        }
+        .btn-detail:hover { border-color: var(--text); color: var(--text); }
+        .btn-wa-card {
+            flex: 1.4;
+            background: var(--primary);
+            color: #fff;
+        }
+        .btn-wa-card:hover { background: var(--primary-dark); transform: translateY(-1px); }
+
+        /* ── NO RESULTS ── */
+        .no-results {
+            grid-column: 1 / -1;
+            text-align: center;
+            padding: 60px 20px;
+            color: var(--text-muted);
+            display: none;
+        }
+        .no-results.show { display: block; }
+        .no-results h3 { font-size: 1.4rem; margin-bottom: 8px; color: #fff; }
+
+        /* ── MODAL ── */
+        .modal-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.88);
+            z-index: 1000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+        }
+        .modal-overlay.open { opacity: 1; pointer-events: all; }
+
+        .modal-box {
+            background: var(--bg-card);
+            border-radius: 18px;
+            border: 1px solid #333;
+            max-width: 900px;
+            width: 100%;
+            display: grid;
+            grid-template-columns: 1.1fr 1fr;
+            overflow: hidden;
+            position: relative;
+            max-height: 92vh;
+            transform: scale(0.92);
+            transition: transform 0.3s ease;
+        }
+        .modal-overlay.open .modal-box { transform: scale(1); }
+
+        .modal-img-col { position: relative; background: #111; min-height: 380px; }
+        .modal-img {
+            width: 100%;
+            height: 100%;
+            min-height: 380px;
+            max-height: 92vh;
+            object-fit: cover;
+            display: block;
+        }
+        .modal-img-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: rgba(0,0,0,0.65);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+        }
+        .modal-img-nav:hover { background: var(--primary); border-color: var(--primary); }
+        .modal-img-nav.prev { left: 14px; }
+        .modal-img-nav.next { right: 14px; }
+        .modal-img-nav.hidden { display: none; }
+
+        .modal-dots {
+            position: absolute;
+            bottom: 16px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 7px;
+            background: rgba(0,0,0,0.5);
+            padding: 6px 10px;
+            border-radius: 50px;
+        }
+        .modal-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(255,255,255,0.35);
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .modal-dot.active { background: var(--primary); }
+
+        .modal-info-col {
+            padding: 32px 30px;
+            display: flex;
+            flex-direction: column;
+            overflow-y: auto;
+        }
+        .modal-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            background: rgba(0,0,0,0.6);
+            border: 1px solid rgba(255,255,255,0.15);
+            color: #fff;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            transition: var(--transition);
+        }
+        .modal-close:hover { background: var(--primary); }
+
+        .modal-cat-badge {
+            display: inline-block;
+            background: var(--primary-soft);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            padding: 4px 12px;
+            border-radius: 50px;
+            margin-bottom: 14px;
+            align-self: flex-start;
+        }
+        .modal-title { font-size: 1.6rem; font-weight: 900; margin-bottom: 14px; line-height: 1.2; }
+        .modal-desc { font-size: 0.95rem; color: #bbb; line-height: 1.75; flex-grow: 1; margin-bottom: 22px; }
+
+        .modal-features { margin-bottom: 22px; }
+        .modal-features li {
+            list-style: none;
+            font-size: 0.85rem;
+            color: #ccc;
+            padding: 4px 0 4px 22px;
+            position: relative;
+        }
+        .modal-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--primary);
             font-weight: 900;
         }
 
-        .section-title span {
-            color: var(--primary-color);
-        }
-
-        /* Grid de Productos */
-        .catalog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-        }
-
-        .product-card {
-            background-color: var(--card-bg);
-            border-radius: 10px;
-            overflow: hidden;
-            transition: var(--transition);
-            border: 1px solid #333;
+        .modal-wa-btn {
             display: flex;
-            flex-direction: column;
-        }
-
-        .product-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(255, 87, 34, 0.2);
-            border-color: var(--primary-color);
-        }
-
-        .product-image {
-            width: 100%;
-            height: 250px;
-            object-fit: cover;
-            border-bottom: 3px solid var(--primary-color);
-            background-color: #222; /* Fondo por si la imagen tarda en cargar */
-        }
-
-        .product-info {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .product-title {
-            font-size: 1.2rem;
-            font-weight: 700;
-            margin-bottom: 10px;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            background: var(--wa-green);
             color: #fff;
-        }
-
-        .product-desc {
+            padding: 14px 24px;
+            border-radius: 10px;
+            font-weight: 700;
             font-size: 0.9rem;
-            color: #aaa;
-            margin-bottom: 20px;
-            flex-grow: 1;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: var(--transition);
         }
+        .modal-wa-btn:hover { background: #1ebe57; transform: translateY(-2px); box-shadow: 0 10px 22px rgba(37,211,102,0.3); }
 
-        /* Botón WhatsApp Flotante */
+        /* ── WHATSAPP FLOAT ── */
         .whatsapp-float {
             position: fixed;
             width: 60px;
             height: 60px;
-            bottom: 40px;
-            right: 40px;
-            background-color: #25d366;
-            color: #FFF;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 30px;
-            box-shadow: 0 5px 15px rgba(37, 211, 102, 0.4);
-            z-index: 100;
+            bottom: 30px;
+            right: 30px;
+            background: var(--wa-green);
+            color: #fff;
+            border-radius: 50%;
             display: flex;
             justify-content: center;
             align-items: center;
-            text-decoration: none;
+            z-index: 500;
+            box-shadow: 0 8px 22px rgba(37,211,102,0.45);
+            transition: var(--transition);
+            animation: pulse 2.5s infinite;
+        }
+        .whatsapp-float:hover { transform: scale(1.1); background: #1ebe57; animation: none; }
+        .whatsapp-icon { width: 34px; height: 34px; fill: currentColor; }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 8px 22px rgba(37,211,102,0.45); }
+            50% { box-shadow: 0 8px 30px rgba(37,211,102,0.8); }
+        }
+
+        /* ── BACK TO TOP ── */
+        #back-to-top {
+            position: fixed;
+            bottom: 105px;
+            right: 30px;
+            width: 46px;
+            height: 46px;
+            background: var(--bg-card);
+            border: 2px solid var(--primary);
+            color: var(--primary);
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 499;
+            opacity: 0;
+            pointer-events: none;
             transition: var(--transition);
         }
+        #back-to-top.visible { opacity: 1; pointer-events: all; }
+        #back-to-top:hover { background: var(--primary); color: #fff; }
 
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-            background-color: #1ebe57;
-            box-shadow: 0 5px 20px rgba(37, 211, 102, 0.6);
-        }
-
-        .whatsapp-icon {
-            width: 35px;
-            height: 35px;
-            fill: currentColor;
-        }
-
-        /* Footer */
+        /* ── FOOTER ── */
         footer {
-            background-color: #000;
+            background: #000;
             text-align: center;
-            padding: 30px 20px;
-            border-top: 1px solid #333;
-            margin-top: 40px;
+            padding: 40px 20px;
+            border-top: 1px solid var(--border);
         }
+        footer .footer-logo { font-weight: 900; font-size: 1.3rem; margin-bottom: 8px; }
+        footer .footer-logo span { color: var(--primary); }
+        footer p { color: #666; font-size: 0.85rem; }
+        footer .socials { margin-top: 14px; display: flex; gap: 18px; justify-content: center; }
+        footer .socials a { color: var(--text-muted); transition: var(--transition); }
+        footer .socials a:hover { color: var(--primary); }
 
-        footer p {
-            color: #777;
-            font-size: 0.9rem;
+        /* ── RESPONSIVE ── */
+        @media (max-width: 768px) {
+            nav { padding: 14px 18px; }
+            nav.scrolled { padding: 10px 18px; }
+            header h1 { font-size: 2.6rem; }
+            header p { font-size: 1rem; }
+            .section-title { font-size: 2rem; }
+            .modal-box { grid-template-columns: 1fr; max-height: 95vh; }
+            .modal-img-col { min-height: 240px; }
+            .modal-img { min-height: 240px; height: 280px; }
+            .modal-info-col { padding: 24px 20px; }
+            .whatsapp-float { bottom: 20px; right: 20px; width: 54px; height: 54px; }
+            #back-to-top { bottom: 88px; right: 20px; width: 42px; height: 42px; }
+            .container { padding: 50px 16px; }
+        }
+        @media (max-width: 480px) {
+            header h1 { font-size: 2rem; }
+            .catalog-grid { grid-template-columns: 1fr; gap: 20px; }
+            .filter-btn { padding: 7px 14px; font-size: 0.72rem; }
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <h1>ApexForge <span>Athletics</span></h1>
-        <p>Accesorios de alto rendimiento para Ironman, Maratón, Ciclismo y Powerlifting. Diseño inteligente para atletas reales.</p>
-    </header>
+<nav id="main-nav">
+    <div class="nav-logo">ApexForge <span>Athletics</span></div>
+    <a href="#catalogo" class="nav-cta">Ver catálogo</a>
+</nav>
 
-    <div class="container">
-        <h2 class="section-title">Nuestro <span>Catálogo</span></h2>
-        
-        <div class="catalog-grid">
-            
-            <div class="product-card">
-                <img src="imagenes/cargador_garmin_rojo_1.jpg" alt="Cargador circular rojo 3D, vista superior" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Cargador Circular Rojo 3D (Vista Superior)</h3>
-                    <p class="product-desc">Base de carga elegante y funcional para tu reloj Garmin.</p>
-                </div>
-            </div>
+<header>
+    <h1>ApexForge <span>Athletics</span></h1>
+    <p>Accesorios impresos en 3D de alto rendimiento para Ironman, Maratón, Trail, Ciclismo y Powerlifting. Diseño inteligente para atletas reales.</p>
+    <a href="#catalogo" class="hero-cta">Explorar Catálogo</a>
+    <div class="scroll-down">▼</div>
+</header>
 
-            <div class="product-card">
-                <img src="imagenes/cargador_garmin_rojo_2.jpg" alt="Cargador circular rojo 3D con cable USB" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Cargador Circular Rojo 3D (Vista Trasera)</h3>
-                    <p class="product-desc">Soporte Garmin con cable USB perfectamente integrado.</p>
-                </div>
-            </div>
+<div class="container" id="catalogo">
+    <h2 class="section-title">Nuestro <span>Catálogo</span></h2>
+    <p class="section-subtitle">Más de 30 accesorios diseñados e impresos en 3D para potenciar tu rendimiento</p>
 
-            <div class="product-card">
-                <img src="imagenes/figura_triathlon_evolution_1.jpg" alt="Figura 'Triathlon Evolution' impresa 3D, vista frontal" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Figura Triathlon Evolution (Vista Frontal)</h3>
-                    <p class="product-desc">Pieza decorativa que celebra la evolución del triatleta.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/figura_triathlon_evolution_2.jpg" alt="Figura 'Triathlon Evolution' impresa 3D, vista lateral" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Figura Triathlon Evolution (Vista Lateral)</h3>
-                    <p class="product-desc">Detalles impresionantes de la figura coleccionable impresos en 3D.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/medalla_finisher_ironman_703_mundial.jpg" alt="Medalla Finisher Ironman 70.3 World Championship" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Medalla Finisher Ironman 70.3 Mundial</h3>
-                    <p class="product-desc">Un logro monumental inmortalizado en una medalla impresa en 3D.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/placa_decorativa_run.jpg" alt="Placa grabada con texto 'RUN.'" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Placa Decorativa RUN</h3>
-                    <p class="product-desc">Demuestra tu pasión por el running en tu espacio.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_gps_garmin_bicicleta_1.jpg" alt="Soporte GPS Garmin en manubrio (comparativa)" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte GPS Manubrio (Comparativa)</h3>
-                    <p class="product-desc">Comparación de diferentes opciones de montaje para tu GPS.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_gps_garmin_bicicleta_2.jpg" alt="Soporte GPS Garmin en manubrio (dos versiones)" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte GPS Manubrio (Dos Versiones)</h3>
-                    <p class="product-desc">Dos versiones para adaptar el GPS a tu manubrio.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_lentes_oakley.jpg" alt="Soporte 3D para 3 lentes Oakley" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte para 3 Lentes Oakley</h3>
-                    <p class="product-desc">Protege tus gafas deportivas de rayones con estilo.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_reloj_garmin_1.jpg" alt="Reloj Garmin en soporte 3D cargando" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte Reloj Garmin (Cargando)</h3>
-                    <p class="product-desc">Exhibe y carga tu reloj deportivo con este soporte.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_reloj_garmin_2.jpg" alt="Soporte Garmin, vista trasera con cable USB" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte Reloj Garmin (Vista Trasera)</h3>
-                    <p class="product-desc">Vista posterior mostrando la integración ordenada del cable.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_reloj_suunto.jpg" alt="Reloj Suunto en soporte 3D" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte de Mesa Suunto</h3>
-                    <p class="product-desc">Soporte de mesa elegante para tu reloj Suunto.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_soft_flask_salomon.jpg" alt="Soporte 3D para botellas blandas Salomon" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte de Secado para Soft Flasks</h3>
-                    <p class="product-desc">Mantén tus botellas de trail running libres de humedad.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_tortuga_casco_ciclismo.jpg" alt="Soporte tortuga 3D con casco Oakley" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte de Casco Tortuga (Oakley)</h3>
-                    <p class="product-desc">Protege tu casco de ciclismo con este diseño único.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_tortuga_garmin_luz.jpg" alt="Soporte tortuga 3D con GPS Garmin y luz trasera" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte Tortuga GPS + Luz Trasera</h3>
-                    <p class="product-desc">Organización compacta y segura para tu GPS y luz.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/medalla_maraton_lima_42k_2.jpg" alt="Medalla de la maratón de Lima (segunda versión)" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Medalla Finisher Maratón de Lima 42k</h3>
-                    <p class="product-desc">Un logro monumental inmortalizado en una medalla impresa en 3D.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_celular_manubrio_bicicleta.jpg" alt="Soporte para celular en manubrio de bicicleta" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte de Celular para Bicicleta</h3>
-                    <p class="product-desc">Mantén tu móvil a la vista y seguro en tus rodadas.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/soporte_linterna_bicicleta_3d.jpg" alt="Soporte para linterna de bicicleta impreso en 3D" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Soporte Linterna Bicicleta 3D</h3>
-                    <p class="product-desc">Iluminación segura para tus rodadas nocturnas.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/rack_records_powerlifting_render.jpg" alt="Render 3D rack PR (Squat/Bench/Deadlift)" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Rack Records Powerlifting (Render)</h3>
-                    <p class="product-desc">Un render 3D de un rack para registrar tus marcas personales.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/rack_records_weightlifting_impreso.jpg" alt="Rack PR impreso (Clean & Jerk / Snatch) Alezcano" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Rack Records Weightlifting (Impreso)</h3>
-                    <p class="product-desc">Rack impreso en 3D para tus récords de levantamiento.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/llavero_disco_light_weight_baby.jpg" alt="Llavero disco verde 'Light Weight Baby!'" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Llavero Disco Light Weight Baby!</h3>
-                    <p class="product-desc">Motivación impresa en 3D para tu llavero.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/llavero_disco_no_pain_no_gain.jpg" alt="Llavero disco azul 'No Pain No Gain'" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Llavero Disco No Pain No Gain</h3>
-                    <p class="product-desc">Un recordatorio constante de que el esfuerzo vale la pena.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/llavero_no_pain_lifestyle_gym.jpg" alt="Lifestyle: bolso gym + llavero + zapatillas" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Llavero Lifestyle No Pain</h3>
-                    <p class="product-desc">Un llavero que captura el espíritu del gimnasio.</p>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img src="imagenes/llavero_kettlebell_16kg.jpg" alt="Llavero kettlebell rojo 16kg" class="product-image">
-                <div class="product-info">
-                    <h3 class="product-title">Llavero Kettlebell Rojo 16kg</h3>
-                    <p class="product-desc">Llavero impreso en 3D con forma de pesa rusa.</p>
-                </div>
-            </div>
-
+    <div class="controls">
+        <div class="filter-bar" id="filter-bar">
+            <button class="filter-btn active" data-filter="all">Todos</button>
+            <button class="filter-btn" data-filter="running">Running &amp; Triatlón</button>
+            <button class="filter-btn" data-filter="ciclismo">Ciclismo</button>
+            <button class="filter-btn" data-filter="garmin">Garmin &amp; Tech</button>
+            <button class="filter-btn" data-filter="gym">Gym &amp; Powerlifting</button>
+            <button class="filter-btn" data-filter="decoracion">Decoración</button>
+        </div>
+        <div class="search-wrap">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+            <input type="text" class="search-input" id="search-input" placeholder="Buscar producto...">
         </div>
     </div>
 
-    <a href="https://wa.me/51999999999?text=Hola,%20vengo%20de%20ApexForge%20y%20quiero%20más%20información%20sobre%20sus%20accesorios%203D" class="whatsapp-float" target="_blank" rel="noopener noreferrer">
-        <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
-        </svg>
-    </a>
+    <p class="result-count"><strong id="result-num">0</strong> productos disponibles</p>
 
-    <footer>
-        <p>&copy; 2026 ApexForge Athletics. Todos los derechos reservados. | Diseñado para el rendimiento.</p>
-    </footer>
+    <div class="catalog-grid" id="catalog-grid">
+        <div class="no-results" id="no-results">
+            <h3>Sin resultados</h3>
+            <p>Prueba con otra búsqueda o categoría.</p>
+        </div>
+    </div>
+</div>
 
+<!-- MODAL -->
+<div class="modal-overlay" id="modal-overlay">
+    <div class="modal-box" role="dialog" aria-modal="true">
+        <button class="modal-close" id="modal-close" aria-label="Cerrar">✕</button>
+        <div class="modal-img-col">
+            <img src="" alt="" class="modal-img" id="modal-img">
+            <button class="modal-img-nav prev" id="modal-prev" aria-label="Anterior">‹</button>
+            <button class="modal-img-nav next" id="modal-next" aria-label="Siguiente">›</button>
+            <div class="modal-dots" id="modal-dots"></div>
+        </div>
+        <div class="modal-info-col">
+            <span class="modal-cat-badge" id="modal-cat"></span>
+            <h2 class="modal-title" id="modal-title"></h2>
+            <p class="modal-desc" id="modal-desc"></p>
+            <ul class="modal-features" id="modal-features"></ul>
+            <a href="#" class="modal-wa-btn" id="modal-wa" target="_blank" rel="noopener noreferrer">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
+                Consultar por WhatsApp
+            </a>
+        </div>
+    </div>
+</div>
+
+<a href="#" class="whatsapp-float" id="wa-general" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp">
+    <svg class="whatsapp-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+        <path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zm-157 341.6c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6zm101.2-138.2c-5.5-2.8-32.8-16.2-37.9-18-5.1-1.9-8.8-2.8-12.5 2.8-3.7 5.6-14.3 18-17.6 21.8-3.2 3.7-6.5 4.2-12 1.4-32.6-16.3-54-29.1-75.5-66-5.7-9.8 5.7-9.1 16.3-30.3 1.8-3.7.9-6.9-.5-9.7-1.4-2.8-12.5-30.1-17.1-41.2-4.5-10.8-9.1-9.3-12.5-9.5-3.2-.2-6.9-.2-10.6-.2-3.7 0-9.7 1.4-14.8 6.9-5.1 5.6-19.4 19-19.4 46.3 0 27.3 19.9 53.7 22.6 57.4 2.8 3.7 39.1 59.7 94.8 83.8 35.2 15.2 49 16.5 66.6 13.9 10.7-1.6 32.8-13.4 37.4-26.4 4.6-13 4.6-24.1 3.2-26.4-1.3-2.5-5-3.9-10.5-6.6z"/>
+    </svg>
+</a>
+
+<button id="back-to-top" aria-label="Volver arriba">▲</button>
+
+<footer>
+    <div class="footer-logo">ApexForge <span>Athletics</span></div>
+    <p>&copy; 2026 ApexForge Athletics. Todos los derechos reservados.</p>
+    <p>Diseñado para el rendimiento · Impreso en 3D en Perú 🇵🇪</p>
+</footer>
+
+<script>
+// ─────────────────────────────────────────────────────────────
+// CONFIGURACIÓN
+// ─────────────────────────────────────────────────────────────
+const WA_NUMBER = '51999999999';
+const CAT_LABELS = {
+    running: 'Running & Triatlón',
+    ciclismo: 'Ciclismo',
+    garmin: 'Garmin & Tech',
+    gym: 'Gym & Powerlifting',
+    decoracion: 'Decoración'
+};
+
+// Placeholder SVG para imágenes que aún no existen
+const PLACEHOLDER = "data:image/svg+xml;charset=UTF-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='300' viewBox='0 0 400 300'%3E%3Crect width='400' height='300' fill='%231a1a1a'/%3E%3Crect x='1' y='1' width='398' height='298' fill='none' stroke='%23ff5722' stroke-width='2' stroke-dasharray='8 6'/%3E%3Ctext x='200' y='140' text-anchor='middle' fill='%23ff5722' font-family='Montserrat, sans-serif' font-size='18' font-weight='900'%3EApexForge%3C/text%3E%3Ctext x='200' y='168' text-anchor='middle' fill='%23777' font-family='Montserrat, sans-serif' font-size='12'%3EFoto pr%C3%B3ximamente%3C/text%3E%3C/svg%3E";
+
+// ─────────────────────────────────────────────────────────────
+// CATÁLOGO DE PRODUCTOS
+// ─────────────────────────────────────────────────────────────
+const PRODUCTS = [
+    // ── RUNNING & TRIATLÓN ──
+    {
+        id: 'medalla-ironman-703',
+        category: 'running',
+        title: 'Medalla Finisher Ironman 70.3 Mundial',
+        short: 'Un logro monumental inmortalizado en una medalla impresa en 3D.',
+        long: 'Celebra tu hazaña en el Campeonato Mundial de Ironman 70.3 con esta réplica de medalla finisher impresa en 3D. Acabado premium con detalles fieles al original. Una pieza única para coleccionistas y atletas apasionados.',
+        features: ['Réplica fiel al original', 'Acabado premium en color', 'Personalizable con tu tiempo'],
+        images: ['imagenes/medalla_finisher_ironman_703_mundial.jpg']
+    },
+    {
+        id: 'medalla-lima-42k',
+        category: 'running',
+        title: 'Medalla Finisher Maratón de Lima 42k',
+        short: 'Revive tu cruce de meta en la Maratón de Lima con esta pieza 3D.',
+        long: 'Cada kilómetro de la Maratón de Lima 42k queda inmortalizado en esta medalla finisher impresa en 3D. Detalle fiel a la medalla original, ideal para exhibir con orgullo en tu colección de logros.',
+        features: ['Diseño oficial Maratón Lima', 'Cinta incluida', 'Listo para colgar'],
+        images: ['imagenes/medalla_maraton_lima_42k_2.jpg']
+    },
+    {
+        id: 'placa-run',
+        category: 'running',
+        title: 'Placa Decorativa RUN',
+        short: 'Demuestra tu pasión por el running en tu espacio.',
+        long: 'Placa decorativa impresa en 3D con la palabra RUN en tipografía deportiva. Ideal para decorar tu hogar, gimnasio o espacio de entrenamiento. Disponible en varios colores a pedido.',
+        features: ['Disponible en varios colores', 'Tornillería incluida', 'Acabado mate o brillante'],
+        images: ['imagenes/placa_decorativa_run.jpg']
+    },
+    {
+        id: 'colgador-medallas-montana',
+        category: 'running',
+        title: 'Colgador de Medallas - Silueta Montaña',
+        short: 'Exhibe tus medallas deportivas con un elegante colgador con silueta de montaña.',
+        long: 'Colgador de medallas impreso en 3D con una impresionante silueta de cordillera. Diseñado para mostrar hasta 8 medallas de running, triatlón, trail o ciclismo. Incluye tornillería para montaje en pared. El accesorio perfecto para celebrar tus logros.',
+        features: ['Capacidad hasta 8 medallas', 'Diseño cordillera única', 'Tornillería incluida', 'Personalizable con tu nombre'],
+        images: ['imagenes/colgador_medallas_montana.jpg'],
+        isNew: true
+    },
+    {
+        id: 'marco-you-did-it',
+        category: 'running',
+        title: 'Marco Finisher "You Did It"',
+        short: 'Marco decorativo personalizable para celebrar cada cruce de meta. Versión masculina y femenina.',
+        long: 'Marco decorativo impreso en 3D que captura el momento más épico del running: cruzar la meta. El texto del arco es totalmente personalizable (nombre, tiempo o mensaje). Disponible en silueta masculina o femenina. El regalo perfecto para finishers.',
+        features: ['Texto personalizable', 'Versión masculina y femenina', 'Marco de madera incluido', 'Listo para colgar'],
+        images: ['imagenes/marco_finisher_you_did_it.jpg'],
+        isNew: true
+    },
+    {
+        id: 'organizador-geles',
+        category: 'running',
+        title: 'Organizador de Geles Deportivos',
+        short: 'Organiza geles, sales y nutrición deportiva en un solo lugar.',
+        long: 'Organizador impreso en 3D con compartimentos para geles energéticos, sales, masticables y suplementos. Compatible con geles Maurten, Decathlon, Tä, GU y demás marcas populares. Ideal para preparar tu nutrición antes de entrenamientos y carreras.',
+        features: ['Compatible con todas las marcas', 'Compartimentos modulares', 'Diseño apilable', 'Para entrenamientos y maletines'],
+        images: ['imagenes/organizador_geles_deportivos.jpg'],
+        isNew: true
+    },
+    {
+        id: 'soporte-pared-zapatillas',
+        category: 'running',
+        title: 'Soporte de Pared para Zapatillas',
+        short: 'Exhibe tu par favorito de zapatillas como obra de arte.',
+        long: 'Soporte de pared impreso en 3D para exhibir tus zapatillas de running como pieza de colección. Compatible con cualquier tipo de calzado deportivo (running, trail, ciclismo). Montaje sencillo con dos tornillos. Diseño minimalista y resistente.',
+        features: ['Universal para todo tipo de zapatilla', 'Montaje en pared', 'Diseño minimalista', 'Filamento de alta resistencia'],
+        images: ['imagenes/soporte_pared_zapatillas.jpg'],
+        isNew: true
+    },
+    {
+        id: 'porta-chip-cronometraje',
+        category: 'running',
+        title: 'Porta Chip de Cronometraje',
+        short: 'Sujeta el chip de cronometraje sin dañar tus zapatillas.',
+        long: 'Porta chip impreso en 3D que se fija al cordón de tus zapatillas y sostiene el chip de cronometraje firmemente durante toda la carrera. Compatible con chips estándar de carrera. Nunca más pierdas tiempo ajustando el chip en la zona de salida.',
+        features: ['Compatible con chips estándar', 'Fácil instalación', 'No daña la zapatilla', 'Reutilizable'],
+        images: ['imagenes/porta_chip_cronometraje.jpg'],
+        isNew: true
+    },
+    {
+        id: 'soporte-soft-flask-salomon',
+        category: 'running',
+        title: 'Soporte de Secado para Soft Flasks',
+        short: 'Mantén tus botellas de trail running libres de humedad.',
+        long: 'Soporte diseñado específicamente para soft flasks de trail running (compatible con Salomon, Kalenji, Nathan y otras marcas). Mantiene las botellas invertidas para un secado completo y previene la acumulación de moho.',
+        features: ['Compatible con todas las marcas', 'Secado completo', 'Filamento resistente al agua', 'Diseño compacto'],
+        images: ['imagenes/soporte_soft_flask_salomon.jpg']
+    },
+    {
+        id: 'soft-flask-pro-6',
+        category: 'running',
+        title: 'Estación Secado Soft Flask Pro - 6 Botellas',
+        short: 'Estación profesional para secar hasta 6 soft flasks a la vez.',
+        long: 'Estación de secado de alta capacidad impresa en 3D, con base perforada para drenaje y 6 pegas verticales. Ideal para ultracorredores, equipos de trail running o atletas que entrenan con múltiples botellas. Diseño robusto con base ventilada.',
+        features: ['Capacidad para 6 soft flasks', 'Base perforada para drenaje', 'Pegas removibles', 'Apto para uso intensivo'],
+        images: ['imagenes/soporte_secado_soft_flask_pro.jpg'],
+        isNew: true
+    },
+    {
+        id: 'soft-flask-doble',
+        category: 'running',
+        title: 'Estación Secado Soft Flask + Tapas (Doble)',
+        short: 'Seca 2 soft flasks y sus tapas simultáneamente.',
+        long: 'Estación impresa en 3D con soporte para 2 soft flasks invertidos más 2 espacios dedicados para las tapas. Diseñado para mantener todo el sistema de hidratación higiénico y libre de humedad. Compatible con flasks Kalenji, Salomon y otras marcas.',
+        features: ['2 flasks + 2 tapas', 'Diseño todo-en-uno', 'Compatible multimarca', 'Disponible en varios colores'],
+        images: ['imagenes/soporte_secado_doble_soft_flask.jpg'],
+        isNew: true
+    },
+    {
+        id: 'soft-flask-compacto',
+        category: 'running',
+        title: 'Estación Secado Soft Flask Compacto',
+        short: 'Versión compacta para 1 flask y 1 tapa.',
+        long: 'Estación compacta impresa en 3D, diseñada para secar 1 soft flask y su tapa. Perfecta para atletas que usan un solo flask o para espacios reducidos. Base oval con bordes redondeados.',
+        features: ['1 flask + 1 tapa', 'Diseño minimalista', 'Base oval estilizada', 'Ocupa muy poco espacio'],
+        images: ['imagenes/soporte_secado_compacto_soft_flask.jpg'],
+        isNew: true
+    },
+
+    // ── CICLISMO ──
+    {
+        id: 'soporte-gps-manubrio',
+        category: 'ciclismo',
+        title: 'Soporte GPS Garmin para Manubrio',
+        short: 'Soporte robusto para tu GPS Garmin con varias versiones de manubrio.',
+        long: 'Soporte impreso en 3D para montar tu GPS Garmin (Edge, Forerunner) en el manubrio de tu bicicleta de ruta o MTB. Disponible en distintas versiones para adaptarse al diámetro de tu manubrio (22-31.8mm). Diseño robusto y seguro para entrenamientos y competencias.',
+        features: ['Compatible con Garmin Edge/Forerunner', 'Varios diámetros disponibles', 'Sistema de bloqueo seguro', 'Resistente a vibraciones'],
+        images: ['imagenes/soporte_gps_garmin_bicicleta_1.jpg', 'imagenes/soporte_gps_garmin_bicicleta_2.jpg']
+    },
+    {
+        id: 'soporte-casco-tortuga',
+        category: 'ciclismo',
+        title: 'Soporte de Casco con Diseño Tortuga',
+        short: 'Soporte de pared con diseño tortuga para tu casco de ciclismo.',
+        long: 'Soporte de pared impreso en 3D con el icónico diseño tortuga de ApexForge. Sostiene cascos de ciclismo de cualquier marca (Oakley, Giro, Bell, Specialized). Su diseño abierto permite ventilación del casco. Fácil instalación con tornillos incluidos.',
+        features: ['Compatible con todas las marcas', 'Diseño tortuga exclusivo', 'Ventilación incorporada', 'Tornillería incluida'],
+        images: ['imagenes/soporte_tortuga_casco_ciclismo.jpg']
+    },
+    {
+        id: 'soporte-tortuga-gps-luz',
+        category: 'ciclismo',
+        title: 'Soporte Tortuga GPS + Luz Trasera',
+        short: 'Organiza GPS y luz trasera en un soporte compacto.',
+        long: 'Soporte con diseño tortuga que combina la sujeción de tu GPS Garmin y luz trasera en un sistema integrado y compacto. Ideal para triatletas y ciclistas que buscan organizar su equipamiento eficientemente.',
+        features: ['GPS + luz en uno', 'Diseño tortuga compacto', 'Compatible Garmin', 'Filamento alta resistencia'],
+        images: ['imagenes/soporte_tortuga_garmin_luz.jpg']
+    },
+    {
+        id: 'soporte-celular-bici',
+        category: 'ciclismo',
+        title: 'Soporte de Celular para Bicicleta',
+        short: 'Mantén tu smartphone a la vista de forma segura.',
+        long: 'Soporte universal para celular, diseñado para el manubrio. Compatible con smartphones de hasta 6.7 pulgadas. Sistema de fijación seguro que soporta vibraciones. Perfecto para Strava, Maps o música.',
+        features: ['Universal hasta 6.7"', 'Anti-vibración', 'Instalación rápida', 'Acceso completo a pantalla'],
+        images: ['imagenes/soporte_celular_manubrio_bicicleta.jpg']
+    },
+    {
+        id: 'soporte-linterna-bici',
+        category: 'ciclismo',
+        title: 'Soporte para Linterna de Bicicleta',
+        short: 'Iluminación segura y orientada para rodadas nocturnas.',
+        long: 'Soporte impreso en 3D para linterna delantera de bicicleta. Compatible con linternas cilíndricas de 22-35mm de diámetro. Ángulo de inclinación ajustable para dirigir el haz de luz correctamente.',
+        features: ['Compatible 22-35mm', 'Ángulo ajustable', 'Montaje seguro', 'Esencial para rodadas nocturnas'],
+        images: ['imagenes/soporte_linterna_bicicleta_3d.jpg']
+    },
+
+    // ── GARMIN & TECH ──
+    {
+        id: 'cargador-garmin-rojo',
+        category: 'garmin',
+        title: 'Cargador Garmin Rojo 3D',
+        short: 'Base de carga con cable USB integrado para tu reloj Garmin.',
+        long: 'Soporte cargador impreso en 3D con diseño circular para relojes Garmin. El cable USB se integra de forma ordenada por la parte trasera, manteniendo tu escritorio limpio. Compatible con Forerunner, Fenix y Epix.',
+        features: ['Cable USB integrado', 'Compatible serie Forerunner/Fenix/Epix', 'Disponible en varios colores', 'Antideslizante en la base'],
+        images: ['imagenes/cargador_garmin_rojo_1.jpg', 'imagenes/cargador_garmin_rojo_2.jpg']
+    },
+    {
+        id: 'soporte-reloj-garmin',
+        category: 'garmin',
+        title: 'Soporte Reloj Garmin',
+        short: 'Exhibe y carga tu reloj Garmin con un acabado limpio.',
+        long: 'Soporte de escritorio impreso en 3D para exhibir y cargar tu reloj Garmin deportivo. Diseño elegante que mantiene el reloj visible y orientado para lectura fácil. El cable USB se oculta internamente.',
+        features: ['Exhibe + carga simultáneo', 'Cable oculto', 'Acabado premium', 'Estable y firme'],
+        images: ['imagenes/soporte_reloj_garmin_1.jpg', 'imagenes/soporte_reloj_garmin_2.jpg']
+    },
+    {
+        id: 'soporte-suunto',
+        category: 'garmin',
+        title: 'Soporte de Mesa para Reloj Suunto',
+        short: 'Soporte minimalista de mesa para tu reloj Suunto.',
+        long: 'Soporte de escritorio impreso en 3D para relojes Suunto. Diseño minimalista y elegante que complementa cualquier espacio. Mantiene tu reloj accesible y visible. Compatible con toda la gama Suunto.',
+        features: ['Compatible toda la gama Suunto', 'Diseño minimalista', 'Estable', 'Base antideslizante'],
+        images: ['imagenes/soporte_reloj_suunto.jpg']
+    },
+    {
+        id: 'soporte-lentes-oakley',
+        category: 'garmin',
+        title: 'Soporte para 3 Lentes Oakley',
+        short: 'Organiza y protege hasta 3 lentes deportivos.',
+        long: 'Soporte impreso en 3D con capacidad para 3 pares de lentes Oakley (o gafas deportivas similares). Diseño que minimiza el contacto con las lentes para evitar rayones. Montaje en pared o uso de escritorio.',
+        features: ['Capacidad 3 lentes', 'Protección anti-rayones', 'Pared o escritorio', 'Compatible Oakley/SCVCN'],
+        images: ['imagenes/soporte_lentes_oakley.jpg']
+    },
+    {
+        id: 'torre-lentes-deportivos',
+        category: 'garmin',
+        title: 'Torre Exhibidora de Lentes Deportivos',
+        short: 'Torre vertical multi-nivel para exhibir tus lentes deportivos.',
+        long: 'Torre exhibidora impresa en 3D con varios niveles para mostrar tus gafas deportivas como en una vitrina. Base circular estable, columna central robusta y brazos para sostener cada par. Perfecta para ciclistas, triatletas y coleccionistas.',
+        features: ['3-4 niveles de exhibición', 'Base circular estable', 'Compatible todas las marcas', 'Diseño tipo vitrina'],
+        images: ['imagenes/torre_lentes_deportivos.jpg'],
+        isNew: true
+    },
+    {
+        id: 'soporte-lentes-fco',
+        category: 'garmin',
+        title: 'Soporte de Lentes Personalizado (Honeycomb)',
+        short: 'Soporte para 4 lentes con base honeycomb e iniciales personalizadas.',
+        long: 'Soporte impreso en 3D con base de patrón honeycomb (hexagonal) y 4 columnas para colocar lentes deportivos. Personalizable con tus iniciales en relieve. Un detalle único para regalo o uso personal.',
+        features: ['Capacidad 4 lentes', 'Iniciales personalizables', 'Patrón honeycomb', 'Disponible en varios colores'],
+        images: ['imagenes/soporte_lentes_personalizado.jpg'],
+        isNew: true
+    },
+
+    // ── GYM & POWERLIFTING ──
+    {
+        id: 'rack-records-powerlifting',
+        category: 'gym',
+        title: 'Rack Records Powerlifting',
+        short: 'Rack 3D para tus marcas en Squat, Bench y Deadlift.',
+        long: 'Diseño de rack impreso en 3D para mostrar orgullosamente tus récords personales en los tres levantamientos del powerlifting: Sentadilla, Press de Banca y Peso Muerto. Incluye marcadores deslizables para actualizar tus marcas fácilmente.',
+        features: ['3 levantamientos clásicos', 'Marcadores actualizables', 'Diseño realista', 'Regalo ideal para powerlifters'],
+        images: ['imagenes/rack_records_powerlifting_render.jpg']
+    },
+    {
+        id: 'rack-records-weightlifting',
+        category: 'gym',
+        title: 'Rack Records Weightlifting',
+        short: 'Rack 3D para tus marcas en Arrancada y Dos Tiempos.',
+        long: 'Rack personalizado impreso en 3D para mostrar tus récords personales en halterofilia: Arrancada (Snatch) y Dos Tiempos (Clean &amp; Jerk). Diseño inspirado en el equipamiento olímpico. Marcadores actualizables.',
+        features: ['Snatch + Clean &amp; Jerk', 'Marcadores actualizables', 'Inspirado en olímpico', 'Ideal CrossFit y halterofilia'],
+        images: ['imagenes/rack_records_weightlifting_impreso.jpg']
+    },
+    {
+        id: 'llavero-light-weight',
+        category: 'gym',
+        title: 'Llavero Disco "Light Weight Baby!"',
+        short: 'El grito de Ronnie Coleman en tu llavero 3D.',
+        long: 'Llavero impreso en 3D con forma de disco olímpico y la icónica frase "Light Weight Baby!" de Ronnie Coleman. Una pieza de motivación para llevar contigo a todas partes.',
+        features: ['Frase icónica Ronnie Coleman', 'Forma de disco olímpico', 'Disponible en varios colores', 'Regalo perfecto'],
+        images: ['imagenes/llavero_disco_light_weight_baby.jpg']
+    },
+    {
+        id: 'llavero-no-pain-disco',
+        category: 'gym',
+        title: 'Llavero Disco "No Pain No Gain"',
+        short: 'Motivación diaria impresa en 3D.',
+        long: 'Llavero impreso en 3D con forma de disco olímpico y el mensaje motivacional "No Pain No Gain". Un recordatorio constante de que el esfuerzo es la clave del progreso.',
+        features: ['Mensaje motivacional', 'Forma de disco', 'Filamento resistente', 'Varios colores'],
+        images: ['imagenes/llavero_disco_no_pain_no_gain.jpg']
+    },
+    {
+        id: 'llavero-lifestyle',
+        category: 'gym',
+        title: 'Llavero Lifestyle Gym',
+        short: 'El estilo de vida del gimnasio en tu llavero.',
+        long: 'Llavero impreso en 3D que representa el estilo de vida fitness. Combina diseño con motivación, perfecto para quienes hacen del entrenamiento parte de su identidad.',
+        features: ['Diseño lifestyle', 'Compacto y resistente', 'Regalo ideal gym friends', 'Personalizable'],
+        images: ['imagenes/llavero_no_pain_lifestyle_gym.jpg']
+    },
+    {
+        id: 'llavero-kettlebell',
+        category: 'gym',
+        title: 'Llavero Kettlebell 16kg',
+        short: 'La icónica pesa rusa en miniatura para tu llavero.',
+        long: 'Llavero impreso en 3D con diseño de kettlebell de 16kg en color rojo. La pesa rusa más icónica del fitness en tu llavero. Disponible en diferentes pesos y colores.',
+        features: ['Diseño kettlebell 16kg', 'Color rojo clásico', 'Filamento resistente', 'Personalizable en peso/color'],
+        images: ['imagenes/llavero_kettlebell_16kg.jpg']
+    },
+
+    // ── DECORACIÓN ──
+    {
+        id: 'figura-triathlon',
+        category: 'decoracion',
+        title: 'Figura Triathlon Evolution',
+        short: 'Pieza decorativa coleccionable que celebra la evolución del triatleta.',
+        long: 'Figura decorativa impresa en 3D que representa la evolución del triatleta: nadador, ciclista y corredor. Pieza artística y coleccionable de alta calidad, perfecta para decorar tu espacio de entrenamiento o exhibir tu pasión por el triatlón.',
+        features: ['Las 3 disciplinas en una pieza', 'Detalles exquisitos', 'Coleccionable', 'Base estable'],
+        images: ['imagenes/figura_triathlon_evolution_1.jpg', 'imagenes/figura_triathlon_evolution_2.jpg']
+    }
+];
+
+// ─────────────────────────────────────────────────────────────
+// UTILIDADES
+// ─────────────────────────────────────────────────────────────
+function waLink(productTitle) {
+    const msg = `Hola, vengo de ApexForge y me interesa el producto: *${productTitle}*. ¿Me pueden dar más información?`;
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+function waGeneralLink() {
+    const msg = 'Hola, vengo de ApexForge y quiero más información sobre sus accesorios 3D.';
+    return `https://wa.me/${WA_NUMBER}?text=${encodeURIComponent(msg)}`;
+}
+
+// ─────────────────────────────────────────────────────────────
+// RENDERIZADO DE PRODUCTOS
+// ─────────────────────────────────────────────────────────────
+function renderProducts() {
+    const grid = document.getElementById('catalog-grid');
+    const noResults = document.getElementById('no-results');
+
+    PRODUCTS.forEach((p, idx) => {
+        const card = document.createElement('div');
+        card.className = 'product-card';
+        card.dataset.id = p.id;
+        card.dataset.category = p.category;
+        card.dataset.search = (p.title + ' ' + p.short + ' ' + (p.long || '')).toLowerCase();
+
+        const multiBadge = p.images.length > 1
+            ? `<span class="multi-badge">📷 ${p.images.length}</span>` : '';
+        const newBadge = p.isNew ? `<span class="new-badge">Nuevo</span>` : '';
+
+        card.innerHTML = `
+            <div class="card-img-wrap">
+                <img src="${p.images[0]}" alt="${p.title}" class="product-image" loading="lazy"
+                     onerror="this.onerror=null;this.src='${PLACEHOLDER}'">
+                <span class="cat-badge">${CAT_LABELS[p.category]}</span>
+                ${newBadge}
+                ${multiBadge}
+            </div>
+            <div class="product-info">
+                <h3 class="product-title">${p.title}</h3>
+                <p class="product-desc">${p.short}</p>
+                <div class="card-actions">
+                    <button class="btn-detail" data-action="detail">Ver detalles</button>
+                    <a href="${waLink(p.title)}" class="btn-wa-card" target="_blank" rel="noopener noreferrer" data-action="wa" onclick="event.stopPropagation()">
+                        <svg width="13" height="13" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
+                        Consultar
+                    </a>
+                </div>
+            </div>
+        `;
+
+        // Click en la card abre modal (excepto en el botón WA que tiene stopPropagation)
+        card.addEventListener('click', () => openModal(p.id));
+
+        grid.insertBefore(card, noResults);
+    });
+
+    updateFilterCounts();
+    updateResultCount();
+}
+
+// ─────────────────────────────────────────────────────────────
+// FILTROS Y BÚSQUEDA
+// ─────────────────────────────────────────────────────────────
+function updateFilterCounts() {
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        const filter = btn.dataset.filter;
+        const count = filter === 'all'
+            ? PRODUCTS.length
+            : PRODUCTS.filter(p => p.category === filter).length;
+        btn.innerHTML = btn.textContent.replace(/\s*\(\d+\)\s*$/, '') + ` <span class="count">(${count})</span>`;
+    });
+}
+
+function applyFilters() {
+    const activeBtn = document.querySelector('.filter-btn.active');
+    const filter = activeBtn ? activeBtn.dataset.filter : 'all';
+    const query = document.getElementById('search-input').value.toLowerCase().trim();
+
+    let visible = 0;
+    document.querySelectorAll('.product-card').forEach(card => {
+        const matchCat = filter === 'all' || card.dataset.category === filter;
+        const matchSearch = !query || card.dataset.search.includes(query);
+        const show = matchCat && matchSearch;
+        card.classList.toggle('filtered-out', !show);
+        if (show) visible++;
+    });
+
+    document.getElementById('no-results').classList.toggle('show', visible === 0);
+    document.getElementById('result-num').textContent = visible;
+}
+
+function updateResultCount() {
+    document.getElementById('result-num').textContent = PRODUCTS.length;
+}
+
+// ─────────────────────────────────────────────────────────────
+// MODAL
+// ─────────────────────────────────────────────────────────────
+let modalState = { product: null, imgIdx: 0 };
+
+function openModal(productId) {
+    const p = PRODUCTS.find(x => x.id === productId);
+    if (!p) return;
+
+    modalState.product = p;
+    modalState.imgIdx = 0;
+
+    document.getElementById('modal-title').textContent = p.title;
+    document.getElementById('modal-desc').textContent = p.long || p.short;
+    document.getElementById('modal-cat').textContent = CAT_LABELS[p.category];
+    document.getElementById('modal-wa').href = waLink(p.title);
+
+    const featList = document.getElementById('modal-features');
+    featList.innerHTML = '';
+    (p.features || []).forEach(f => {
+        const li = document.createElement('li');
+        li.textContent = f;
+        featList.appendChild(li);
+    });
+
+    renderModalImage();
+
+    document.getElementById('modal-overlay').classList.add('open');
+    document.body.style.overflow = 'hidden';
+}
+
+function renderModalImage() {
+    const p = modalState.product;
+    const img = document.getElementById('modal-img');
+    img.src = p.images[modalState.imgIdx];
+    img.alt = p.title;
+    img.onerror = () => { img.onerror = null; img.src = PLACEHOLDER; };
+
+    const prev = document.getElementById('modal-prev');
+    const next = document.getElementById('modal-next');
+    const dotsWrap = document.getElementById('modal-dots');
+
+    if (p.images.length > 1) {
+        prev.classList.remove('hidden');
+        next.classList.remove('hidden');
+        dotsWrap.style.display = 'flex';
+        dotsWrap.innerHTML = '';
+        p.images.forEach((_, i) => {
+            const dot = document.createElement('span');
+            dot.className = 'modal-dot' + (i === modalState.imgIdx ? ' active' : '');
+            dot.addEventListener('click', (e) => { e.stopPropagation(); modalState.imgIdx = i; renderModalImage(); });
+            dotsWrap.appendChild(dot);
+        });
+    } else {
+        prev.classList.add('hidden');
+        next.classList.add('hidden');
+        dotsWrap.style.display = 'none';
+    }
+}
+
+function closeModal() {
+    document.getElementById('modal-overlay').classList.remove('open');
+    document.body.style.overflow = '';
+}
+
+function navModal(dir) {
+    const p = modalState.product;
+    if (!p || p.images.length <= 1) return;
+    modalState.imgIdx = (modalState.imgIdx + dir + p.images.length) % p.images.length;
+    renderModalImage();
+}
+
+// ─────────────────────────────────────────────────────────────
+// SCROLL REVEAL
+// ─────────────────────────────────────────────────────────────
+function initScrollReveal() {
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry, i) => {
+            if (entry.isIntersecting) {
+                setTimeout(() => entry.target.classList.add('visible'), i * 40);
+                observer.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.product-card').forEach(card => observer.observe(card));
+}
+
+// ─────────────────────────────────────────────────────────────
+// EVENTOS GLOBALES
+// ─────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', () => {
+    renderProducts();
+    initScrollReveal();
+
+    // WA flotante
+    document.getElementById('wa-general').href = waGeneralLink();
+
+    // Filtros
+    document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            applyFilters();
+        });
+    });
+
+    // Búsqueda
+    let searchTimer;
+    document.getElementById('search-input').addEventListener('input', () => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(applyFilters, 150);
+    });
+
+    // Modal close
+    document.getElementById('modal-close').addEventListener('click', closeModal);
+    document.getElementById('modal-overlay').addEventListener('click', (e) => {
+        if (e.target.id === 'modal-overlay') closeModal();
+    });
+    document.getElementById('modal-prev').addEventListener('click', (e) => { e.stopPropagation(); navModal(-1); });
+    document.getElementById('modal-next').addEventListener('click', (e) => { e.stopPropagation(); navModal(1); });
+
+    document.addEventListener('keydown', (e) => {
+        if (!document.getElementById('modal-overlay').classList.contains('open')) return;
+        if (e.key === 'Escape') closeModal();
+        if (e.key === 'ArrowLeft') navModal(-1);
+        if (e.key === 'ArrowRight') navModal(1);
+    });
+
+    // Nav scroll
+    const nav = document.getElementById('main-nav');
+    const backTop = document.getElementById('back-to-top');
+    window.addEventListener('scroll', () => {
+        nav.classList.toggle('scrolled', window.scrollY > 50);
+        backTop.classList.toggle('visible', window.scrollY > 400);
+    });
+
+    backTop.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+});
+</script>
 </body>
 </html>
