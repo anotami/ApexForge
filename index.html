@@ -307,6 +307,112 @@
         #back-to-top:hover { background:var(--primary); color:#fff; }
 
         /* ── RESPONSIVE ──────────────────────────── */
+        /* ── HERO EXTRAS ─────────────────────────── */
+        .hero-tag {
+            display:inline-block;
+            background:var(--primary-soft); border:1px solid var(--primary);
+            color:var(--primary); font-size:.8rem; font-weight:700;
+            text-transform:uppercase; letter-spacing:1px;
+            padding:6px 18px; border-radius:50px; margin-bottom:18px;
+            animation:fadeUp .8s ease .05s backwards;
+        }
+        header > p.hero-desc {
+            font-size:1.15rem; max-width:640px; color:#ccc; margin-bottom:12px;
+            animation:fadeUp .8s ease .2s backwards;
+        }
+        .hero-sub {
+            font-size:.95rem; color:#888; max-width:500px;
+            margin-bottom:34px; animation:fadeUp .8s ease .3s backwards;
+        }
+        .hero-btns { display:flex; gap:14px; flex-wrap:wrap; justify-content:center; animation:fadeUp .8s ease .4s backwards; }
+        .hero-cta-sec {
+            display:inline-block; background:transparent; color:var(--text);
+            padding:15px 32px; border-radius:50px; font-weight:700;
+            text-transform:uppercase; letter-spacing:1px; font-size:.9rem;
+            border:2px solid rgba(255,255,255,.25);
+            transition:var(--transition);
+        }
+        .hero-cta-sec:hover { border-color:var(--primary); color:var(--primary); transform:translateY(-3px); }
+
+        /* ── STATS BAR ───────────────────────────── */
+        .stats-bar {
+            background:var(--bg-card); border-bottom:1px solid var(--border);
+        }
+        .stats-inner {
+            max-width:1280px; margin:0 auto; padding:26px 20px;
+            display:flex; flex-wrap:wrap; justify-content:center; gap:0;
+        }
+        .stat-item {
+            text-align:center; padding:10px 40px;
+            border-right:1px solid var(--border);
+        }
+        .stat-item:last-child { border-right:none; }
+        .stat-num { font-size:2.2rem; font-weight:900; color:var(--primary); display:block; line-height:1; }
+        .stat-label { font-size:.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:.8px; margin-top:4px; display:block; }
+
+        /* ── PERSONALIZACIÓN ─────────────────────── */
+        .custom-section { background:var(--bg); padding:0; }
+        .custom-inner {
+            max-width:1280px; margin:0 auto; padding:80px 20px;
+            display:grid; grid-template-columns:1fr 1.2fr; gap:70px; align-items:center;
+        }
+        .custom-left {}
+        .custom-eyebrow {
+            font-size:.78rem; font-weight:700; text-transform:uppercase; letter-spacing:1.5px;
+            color:var(--primary); margin-bottom:16px; display:block;
+        }
+        .custom-left h2 { font-size:2.8rem; font-weight:900; line-height:1.1; margin-bottom:20px; }
+        .custom-left h2 span { color:var(--primary); }
+        .custom-left p { color:#aaa; font-size:1rem; line-height:1.75; margin-bottom:26px; }
+        .custom-guarantee {
+            display:flex; flex-direction:column; gap:10px; margin-bottom:32px;
+        }
+        .guarantee-item {
+            display:flex; align-items:center; gap:12px;
+            font-size:.9rem; color:#ccc;
+        }
+        .guarantee-icon {
+            width:32px; height:32px; min-width:32px;
+            background:var(--primary-soft); border:1px solid var(--primary);
+            border-radius:50%; display:flex; align-items:center; justify-content:center;
+            font-size:.9rem;
+        }
+        .custom-wa {
+            display:inline-flex; align-items:center; gap:10px;
+            background:var(--wa); color:#fff; padding:16px 32px; border-radius:50px;
+            font-weight:700; font-size:.95rem; text-transform:uppercase; letter-spacing:.5px;
+            transition:var(--transition); box-shadow:0 8px 24px rgba(37,211,102,.35);
+        }
+        .custom-wa:hover { background:#1ebe57; transform:translateY(-3px); box-shadow:0 12px 30px rgba(37,211,102,.5); }
+
+        .custom-right {}
+        .steps { display:flex; flex-direction:column; gap:0; }
+        .step {
+            display:flex; gap:24px; align-items:flex-start;
+            padding:28px 0; border-bottom:1px solid var(--border); position:relative;
+        }
+        .step:last-child { border-bottom:none; }
+        .step-num-wrap { flex-shrink:0; }
+        .step-num {
+            width:50px; height:50px; border-radius:50%;
+            background:var(--primary); color:#fff;
+            font-size:1.1rem; font-weight:900;
+            display:flex; align-items:center; justify-content:center;
+        }
+        .step-body {}
+        .step-body h3 { font-size:1.1rem; font-weight:700; margin-bottom:6px; color:#fff; }
+        .step-body p { font-size:.88rem; color:var(--text-muted); line-height:1.6; }
+        .step-connector {
+            position:absolute; left:25px; top:78px; bottom:-28px;
+            width:2px; background:var(--border); z-index:0;
+        }
+        .step:last-child .step-connector { display:none; }
+
+        /* ── RESPONSIVE EXTRAS ───────────────────── */
+        @media(max-width:900px){
+            .custom-inner { grid-template-columns:1fr; gap:40px; }
+            .custom-left h2 { font-size:2.2rem; }
+        }
         @media(max-width:768px){
             nav { padding:14px 18px; }
             nav.scrolled { padding:10px 18px; }
@@ -319,11 +425,14 @@
             .cta-banner h2 { font-size:1.8rem; }
             .wa-float, #back-to-top { right:18px; }
             #back-to-top { bottom:92px; }
+            .stat-item { padding:10px 22px; border-right:none; border-bottom:1px solid var(--border); }
+            .stat-item:last-child { border-bottom:none; }
         }
         @media(max-width:480px){
             header h1 { font-size:2rem; }
             .catalog-grid { grid-template-columns:1fr; gap:18px; }
             .filter-btn { padding:7px 14px; font-size:.72rem; }
+            .hero-btns { flex-direction:column; align-items:center; }
         }
     </style>
 </head>
@@ -332,16 +441,46 @@
 <!-- NAV -->
 <nav id="main-nav">
     <div class="nav-logo">ApexForge <span>Athletics</span></div>
-    <a href="#catalogo" class="nav-cta">Ver catálogo</a>
+    <div style="display:flex;gap:12px;align-items:center;">
+        <a href="#tu-idea" style="font-size:.8rem;font-weight:600;color:var(--text-muted);text-transform:uppercase;letter-spacing:.5px;transition:var(--transition);" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">Tu idea</a>
+        <a href="#catalogo" class="nav-cta">Ver catálogo</a>
+    </div>
 </nav>
 
 <!-- HERO -->
 <header>
+    <span class="hero-tag">Impresión 3D · Personalización Total</span>
     <h1>ApexForge <span>Athletics</span></h1>
-    <p>Accesorios impresos en 3D de alto rendimiento para Ironman, Maratón, Trail, Ciclismo y Powerlifting. Diseño inteligente para atletas reales.</p>
-    <a href="#catalogo" class="hero-cta">Explorar Catálogo</a>
+    <p class="hero-desc">Para atletas que no se conforman con lo genérico. Imprimimos y personalizamos accesorios 3D para running, triatlón, ciclismo y powerlifting.</p>
+    <p class="hero-sub">¿Tienes una idea? La diseñamos, la imprimimos y la enviamos a donde estés.</p>
+    <div class="hero-btns">
+        <a href="#catalogo" class="hero-cta">Ver Catálogo</a>
+        <a href="#tu-idea" class="hero-cta-sec">Enviar mi idea →</a>
+    </div>
     <div class="scroll-hint">▼</div>
 </header>
+
+<!-- STATS BAR -->
+<div class="stats-bar">
+    <div class="stats-inner">
+        <div class="stat-item">
+            <span class="stat-num">200+</span>
+            <span class="stat-label">Atletas equipados</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">50+</span>
+            <span class="stat-label">Diseños únicos</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">100%</span>
+            <span class="stat-label">Personalizable</span>
+        </div>
+        <div class="stat-item">
+            <span class="stat-num">A pedido</span>
+            <span class="stat-label">Cada pieza es única</span>
+        </div>
+    </div>
+</div>
 
 <!-- CATÁLOGO -->
 <div class="container" id="catalogo">
@@ -372,11 +511,78 @@
     </div>
 </div>
 
+<!-- SECCIÓN PERSONALIZACIÓN -->
+<section class="custom-section" id="tu-idea">
+    <div class="custom-inner">
+        <div class="custom-left">
+            <span class="custom-eyebrow">Diseño y fabricación a medida</span>
+            <h2>Si puedes imaginarlo,<br>lo <span>imprimimos.</span></h2>
+            <p>No encontraste el accesorio que necesitas en el catálogo? No hay problema. Trabajamos desde cero contigo: tomamos tu idea, la modelamos en 3D y la fabricamos en el color, medida y material que elijas.</p>
+            <div class="custom-guarantee">
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">🎨</div>
+                    <span>Cualquier color, textura o acabado disponible</span>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">📐</div>
+                    <span>Diseño personalizado desde tu boceto o referencia</span>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">⚡</div>
+                    <span>Prototipos rápidos: del diseño al producto en días</span>
+                </div>
+                <div class="guarantee-item">
+                    <div class="guarantee-icon">🏆</div>
+                    <span>Filamento de alta calidad para uso deportivo real</span>
+                </div>
+            </div>
+            <a href="#" class="custom-wa" id="idea-wa">
+                <svg width="20" height="20" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
+                Enviar mi idea ahora
+            </a>
+        </div>
+        <div class="custom-right">
+            <div class="steps">
+                <div class="step">
+                    <div class="step-num-wrap">
+                        <div class="step-num">01</div>
+                    </div>
+                    <div class="step-body">
+                        <h3>Cuéntanos tu idea</h3>
+                        <p>Envíanos un mensaje por WhatsApp con tu idea, boceto, foto de referencia o simplemente descríbela con palabras. No necesitas saber de diseño 3D.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step">
+                    <div class="step-num-wrap">
+                        <div class="step-num">02</div>
+                    </div>
+                    <div class="step-body">
+                        <h3>Diseñamos y aprobamos juntos</h3>
+                        <p>Modelamos tu pieza en 3D y te enviamos una vista previa para que la apruebes o pidas ajustes. Sin sorpresas: solo imprimimos cuando estás conforme.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                </div>
+                <div class="step">
+                    <div class="step-num-wrap">
+                        <div class="step-num">03</div>
+                    </div>
+                    <div class="step-body">
+                        <h3>Imprimimos y enviamos</h3>
+                        <p>Fabricamos tu accesorio con filamento de alta calidad, lo preparamos y lo enviamos a cualquier parte del Perú. Del taller a tus manos en pocos días.</p>
+                    </div>
+                    <div class="step-connector"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- BANNER CTA -->
 <div class="cta-banner">
-    <h2>¿Tienes un proyecto <span>especial?</span></h2>
-    <p>Diseñamos y fabricamos accesorios a medida para atletas, equipos y marcas deportivas. Cuéntanos tu idea.</p>
-    <a href="#wa-general" id="cta-wa">
+    <h2>Cada pieza, <span>única como tú.</span></h2>
+    <p>Fabricamos a pedido para atletas, equipos y marcas deportivas. Todo es personalizable: colores, textos, medidas y diseños. Consúltanos sin compromiso.</p>
+    <a href="#" id="cta-wa">
         <svg width="22" height="22" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
         Consultar por WhatsApp
     </a>
@@ -407,8 +613,9 @@
 <!-- FOOTER -->
 <footer>
     <div class="footer-logo">ApexForge <span>Athletics</span></div>
-    <p>&copy; 2026 ApexForge Athletics. Todos los derechos reservados.</p>
-    <p>Diseñado para el rendimiento · Impreso en 3D en Perú 🇵🇪</p>
+    <p style="margin-bottom:6px;">&copy; 2026 ApexForge Athletics. Todos los derechos reservados.</p>
+    <p>Impresión y personalización 3D para atletas · Hecho en Perú 🇵🇪</p>
+    <p style="margin-top:14px; font-size:.8rem; color:#444;">¿Tienes una idea? Escríbenos — lo fabricamos para ti.</p>
 </footer>
 
 <!-- WHATSAPP FLOTANTE -->
@@ -773,8 +980,10 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.product-card').forEach(c => obs.observe(c));
 
     // WA links
+    const waIdea = `https://wa.me/${WA}?text=${encodeURIComponent('Hola ApexForge! Tengo una idea para un accesorio 3D personalizado y me gustaría consultarles. Mi idea es: ')}`;
     document.getElementById('wa-float').href = waGeneral();
     document.getElementById('cta-wa').href = waGeneral();
+    document.getElementById('idea-wa').href = waIdea;
 
     // Filtros
     document.querySelectorAll('.filter-btn').forEach(btn => {
