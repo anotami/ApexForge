@@ -306,6 +306,109 @@
         #back-to-top.visible { opacity:1; pointer-events:all; }
         #back-to-top:hover { background:var(--primary); color:#fff; }
 
+        /* ── PRODUCTO ESTRELLA ──────────────────────*/
+        .star-section {
+            background: linear-gradient(135deg, #111 0%, #1a1a1a 50%, #111 100%);
+            border-top: 1px solid var(--border);
+            border-bottom: 3px solid var(--primary);
+            padding: 70px 20px;
+        }
+        .star-inner {
+            max-width: 1280px; margin: 0 auto;
+        }
+        .star-eyebrow {
+            display: flex; align-items: center; justify-content: center; gap: 10px;
+            margin-bottom: 40px;
+        }
+        .star-eyebrow-line {
+            flex: 1; max-width: 120px; height: 1px; background: var(--primary);
+        }
+        .star-eyebrow-text {
+            font-size: .78rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: 2px; color: var(--primary);
+        }
+        .star-grid {
+            display: grid; grid-template-columns: 1.1fr 1fr; gap: 60px; align-items: start;
+        }
+        /* image side */
+        .star-img-main {
+            border-radius: 16px; overflow: hidden; border: 2px solid var(--primary);
+            box-shadow: 0 20px 60px rgba(255,87,34,.3);
+            position: relative; cursor: pointer;
+        }
+        .star-img-main img {
+            width: 100%; display: block; object-fit: cover;
+            max-height: 540px; transition: transform .5s ease;
+        }
+        .star-img-main:hover img { transform: scale(1.03); }
+        .star-img-main .star-zoom-hint {
+            position: absolute; bottom: 14px; right: 14px;
+            background: rgba(0,0,0,.7); color: #fff; font-size: .7rem;
+            padding: 4px 10px; border-radius: 50px;
+            backdrop-filter: blur(4px);
+        }
+        .star-thumbnails {
+            display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; margin-top: 12px;
+        }
+        .star-thumb {
+            border-radius: 8px; overflow: hidden; border: 2px solid transparent;
+            cursor: pointer; transition: var(--transition); aspect-ratio: 1;
+        }
+        .star-thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+        .star-thumb:hover, .star-thumb.active { border-color: var(--primary); }
+        /* info side */
+        .star-badge-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 16px; }
+        .star-badge {
+            font-size: .7rem; font-weight: 700; text-transform: uppercase;
+            letter-spacing: .5px; padding: 4px 12px; border-radius: 50px;
+        }
+        .star-badge-primary { background: var(--primary); color: #fff; }
+        .star-badge-outline { background: transparent; border: 1px solid var(--primary); color: var(--primary); }
+        .star-title {
+            font-size: 2.4rem; font-weight: 900; line-height: 1.1; margin-bottom: 16px;
+        }
+        .star-title span { color: var(--primary); }
+        .star-desc { color: #aaa; font-size: 1rem; line-height: 1.75; margin-bottom: 24px; }
+        .star-hook {
+            background: var(--primary-soft); border-left: 3px solid var(--primary);
+            padding: 14px 18px; border-radius: 0 8px 8px 0; margin-bottom: 24px;
+            font-style: italic; color: #ccc; font-size: .95rem; line-height: 1.6;
+        }
+        .star-features-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-bottom: 28px;
+        }
+        .star-feature {
+            display: flex; align-items: center; gap: 10px;
+            background: var(--bg-elev); border-radius: 8px; padding: 12px 14px;
+            font-size: .85rem; color: #ccc;
+        }
+        .star-feature-icon {
+            font-size: 1.2rem; flex-shrink: 0;
+        }
+        .star-cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+        .star-wa-btn {
+            flex: 2; display: flex; align-items: center; justify-content: center; gap: 9px;
+            background: var(--wa); color: #fff; padding: 16px 24px; border-radius: 12px;
+            font-weight: 700; font-size: .95rem; text-transform: uppercase; letter-spacing: .5px;
+            transition: var(--transition); box-shadow: 0 8px 24px rgba(37,211,102,.35);
+        }
+        .star-wa-btn:hover { background: #1ebe57; transform: translateY(-3px); }
+        .star-custom-btn {
+            flex: 1; display: flex; align-items: center; justify-content: center;
+            background: transparent; border: 2px solid var(--primary); color: var(--primary);
+            padding: 16px 20px; border-radius: 12px; font-weight: 700; font-size: .9rem;
+            text-transform: uppercase; transition: var(--transition);
+        }
+        .star-custom-btn:hover { background: var(--primary); color: #fff; }
+        .star-custom-note {
+            text-align: center; margin-top: 12px; font-size: .8rem; color: var(--text-muted);
+        }
+        @media(max-width:900px) {
+            .star-grid { grid-template-columns: 1fr; gap: 36px; }
+            .star-title { font-size: 1.9rem; }
+            .star-thumbnails { grid-template-columns: repeat(4,1fr); }
+        }
+
         /* ── RESPONSIVE ──────────────────────────── */
         /* ── HERO EXTRAS ─────────────────────────── */
         .hero-tag {
@@ -481,6 +584,71 @@
         </div>
     </div>
 </div>
+
+<!-- PRODUCTO ESTRELLA -->
+<section class="star-section" id="producto-estrella">
+    <div class="star-inner">
+        <div class="star-eyebrow">
+            <div class="star-eyebrow-line"></div>
+            <span class="star-eyebrow-text">⭐ Producto Estrella</span>
+            <div class="star-eyebrow-line"></div>
+        </div>
+        <div class="star-grid">
+            <!-- Imagen principal + galería -->
+            <div>
+                <div class="star-img-main" id="star-main-wrap">
+                    <img id="star-main-img" src="imagenes/rack_ciclismo_negro_sidi.jpg" alt="Rack Organizador Ciclismo Todo-en-Uno">
+                    <span class="star-zoom-hint">Click para detalle</span>
+                </div>
+                <div class="star-thumbnails">
+                    <div class="star-thumb active" onclick="switchStarImg(this,'imagenes/rack_ciclismo_negro_sidi.jpg')">
+                        <img src="imagenes/rack_ciclismo_negro_sidi.jpg" alt="Negro Sidi">
+                    </div>
+                    <div class="star-thumb" onclick="switchStarImg(this,'imagenes/rack_ciclismo_blanco_shimano.jpg')">
+                        <img src="imagenes/rack_ciclismo_blanco_shimano.jpg" alt="Blanco Shimano">
+                    </div>
+                    <div class="star-thumb" onclick="switchStarImg(this,'imagenes/rack_ciclismo_verde_garmin.jpg')">
+                        <img src="imagenes/rack_ciclismo_verde_garmin.jpg" alt="Verde">
+                    </div>
+                    <div class="star-thumb" onclick="switchStarImg(this,'imagenes/rack_ciclismo_rojo_personalizado.jpg')">
+                        <img src="imagenes/rack_ciclismo_rojo_personalizado.jpg" alt="Rojo personalizado">
+                    </div>
+                </div>
+            </div>
+            <!-- Info del producto -->
+            <div>
+                <div class="star-badge-row">
+                    <span class="star-badge star-badge-primary">⭐ Más vendido</span>
+                    <span class="star-badge star-badge-outline">100% Personalizable</span>
+                    <span class="star-badge star-badge-outline">Nuevo</span>
+                </div>
+                <h2 class="star-title">Rack Organizador<br><span>Ciclismo Todo-en-Uno</span></h2>
+                <p class="star-desc">El accesorio definitivo para el ciclista y triatleta organizado. Un solo soporte de pared que ordena tus zapatillas, casco, GPS y accesorios — y lleva tu nombre.</p>
+                <div class="star-hook">
+                    "Terminas un entrenamiento y tienes todo colgado en su lugar en segundos. Zapatillas, casco, Garmin — todo visible, todo organizado, todo listo para la próxima salida."
+                </div>
+                <div class="star-features-grid">
+                    <div class="star-feature"><span class="star-feature-icon">👟</span> 2 zapatillas de ciclismo</div>
+                    <div class="star-feature"><span class="star-feature-icon">🪖</span> Casco en gancho central</div>
+                    <div class="star-feature"><span class="star-feature-icon">📡</span> Soporte GPS Garmin integrado</div>
+                    <div class="star-feature"><span class="star-feature-icon">🎨</span> Tu nombre en relieve</div>
+                    <div class="star-feature"><span class="star-feature-icon">🔧</span> Tornillería y taco incluidos</div>
+                    <div class="star-feature"><span class="star-feature-icon">🌈</span> Cualquier color disponible</div>
+                    <div class="star-feature"><span class="star-feature-icon">📦</span> Hecho a pedido en días</div>
+                    <div class="star-feature"><span class="star-feature-icon">🚚</span> Envío a todo el Perú</div>
+                </div>
+                <div class="star-cta-row">
+                    <a href="#" class="star-wa-btn" id="star-wa">
+                        <svg width="20" height="20" fill="currentColor" viewBox="0 0 448 512"><path d="M380.9 97.1C339 55.1 283.2 32 223.9 32c-122.4 0-222 99.6-222 222 0 39.1 10.2 77.3 29.6 111L0 480l117.7-30.9c32.4 17.7 68.9 27 106.1 27h.1c122.3 0 224.1-99.6 224.1-222 0-59.3-25.2-115-67.1-157.1zM223.9 438.7c-33.2 0-65.7-8.9-94-25.7l-6.7-4-69.8 18.3L72 359.2l-4.4-7c-18.5-29.4-28.2-63.3-28.2-98.2 0-101.7 82.8-184.5 184.6-184.5 49.3 0 95.6 19.2 130.4 54.1 34.8 34.9 56.2 81.2 56.1 130.5 0 101.8-84.9 184.6-186.6 184.6z"/></svg>
+                        Quiero el mío — Consultar precio
+                    </a>
+                    <a href="#tu-idea" class="star-custom-btn">Personalizar</a>
+                </div>
+                <p class="star-custom-note">¿Quieres otro color o diseño diferente? Lo hacemos a tu medida.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 <!-- CATÁLOGO -->
 <div class="container" id="catalogo">
@@ -662,6 +830,24 @@ function waGeneral(){
 
 // ── PRODUCTOS ─────────────────────────────────────────────────
 const PRODUCTS = [
+    // ── CICLISMO – PRODUCTO ESTRELLA (también en catálogo)
+    {
+        id:'rack-ciclismo',
+        category:'ciclismo',
+        title:'Rack Organizador Ciclismo Todo-en-Uno',
+        short:'Zapatillas, casco y GPS Garmin organizados en un solo soporte de pared. Con tu nombre.',
+        long:'El accesorio definitivo para el ciclista organizado: un soporte de pared impreso en 3D que sostiene tus 2 zapatillas de ciclismo, tu casco y tu GPS Garmin — todo en un solo lugar. Personalizado con tu nombre en relieve. Disponible en cualquier color. Tornillería incluida. Fabricado a pedido.',
+        features:['2 zapatillas de ciclismo','Casco en gancho central','Soporte GPS Garmin integrado','Tu nombre en relieve','Cualquier color disponible','Tornillería y taco incluidos','Hecho a pedido'],
+        images:[
+            'imagenes/rack_ciclismo_negro_sidi.jpg',
+            'imagenes/rack_ciclismo_blanco_shimano.jpg',
+            'imagenes/rack_ciclismo_verde_garmin.jpg',
+            'imagenes/rack_ciclismo_rojo_personalizado.jpg',
+            'imagenes/rack_ciclismo_azul_personalizado.jpg'
+        ],
+        isStar: true
+    },
+
     // RUNNING & TRIATLÓN
     {
         id:'medalla-ironman',
@@ -853,6 +1039,13 @@ const PRODUCTS = [
     }
 ];
 
+// ── STAR PRODUCT ──────────────────────────────────────────────
+function switchStarImg(thumb, src) {
+    document.getElementById('star-main-img').src = src;
+    document.querySelectorAll('.star-thumb').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+}
+
 // ── RENDER ────────────────────────────────────────────────────
 function renderProducts(){
     const grid = document.getElementById('catalog-grid');
@@ -865,12 +1058,14 @@ function renderProducts(){
         card.dataset.search = (p.title + ' ' + p.short + ' ' + p.long).toLowerCase();
 
         const multiBadge = p.images.length > 1 ? `<span class="multi-badge">📷 ${p.images.length} fotos</span>` : '';
+        const starBadge  = p.isStar ? `<span class="new-badge" style="background:#f59e0b;color:#000;">⭐ Estrella</span>` : '';
 
         card.innerHTML = `
             <div class="card-img-wrap">
                 <img src="${p.images[0]}" alt="${p.title}" class="product-image" loading="lazy"
                      onerror="this.onerror=null;this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 width=%22400%22 height=%22300%22%3E%3Crect fill=%22%231a1a1a%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%22200%22 y=%22155%22 text-anchor=%22middle%22 fill=%22%23555%22 font-size=%2213%22 font-family=%22sans-serif%22%3EFoto pr%C3%B3ximamente%3C/text%3E%3C/svg%3E'">
                 <span class="cat-badge">${CAT[p.category]}</span>
+                ${starBadge}
                 ${multiBadge}
             </div>
             <div class="product-info">
@@ -981,9 +1176,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // WA links
     const waIdea = `https://wa.me/${WA}?text=${encodeURIComponent('Hola ApexForge! Tengo una idea para un accesorio 3D personalizado y me gustaría consultarles. Mi idea es: ')}`;
+    const waRack = `https://wa.me/${WA}?text=${encodeURIComponent('Hola ApexForge! Me interesa el Rack Organizador Ciclismo Todo-en-Uno. ¿Cuál es el precio y cómo lo personalizo?')}`;
     document.getElementById('wa-float').href = waGeneral();
     document.getElementById('cta-wa').href = waGeneral();
     document.getElementById('idea-wa').href = waIdea;
+    document.getElementById('star-wa').href = waRack;
+    document.getElementById('star-main-wrap').addEventListener('click', () => {
+        const p = PRODUCTS.find(x => x.id === 'rack-ciclismo');
+        if(p) openModal('rack-ciclismo');
+    });
 
     // Filtros
     document.querySelectorAll('.filter-btn').forEach(btn => {
